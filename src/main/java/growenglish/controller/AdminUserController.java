@@ -44,7 +44,6 @@ public class AdminUserController extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/admin/users");
             return;
         }
-
         switch (action) {
             case "delete":
                 userDAO.deleteUser(username);
@@ -58,7 +57,6 @@ public class AdminUserController extends HttpServlet {
             default:
                 break;
         }
-
         resp.sendRedirect(req.getContextPath() + "/admin/users");
     }
 }

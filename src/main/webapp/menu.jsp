@@ -50,20 +50,15 @@
 </head>
 <div class="sidebar">
     <div class="logo">
-        <%-- SỬA 1: Thêm contextPath --%>
         <a href="${pageContext.request.contextPath}/index.jsp">
             <img src="assets/images/GE.png" alt="Logo" style="width: 50px; height: auto;">
         </a>
         G - English
     </div>
-
     <nav>
-        <%-- SỬA 2: Thêm contextPath và sửa logic active cho Trang chủ --%>
         <a href="${pageContext.request.contextPath}/home" class="menu-item ${fn:endsWith(pageContext.request.requestURI, 'home') or fn:endsWith(pageContext.request.requestURI, 'index.jsp') ? 'active' : ''}">
             <img src="assets/images/Icon/home.svg" class="icon" alt="Trang chủ"> Trang chủ
         </a>
-        
-        <%-- SỬA 3: Thêm contextPath cho các link còn lại --%>
         <a href="${pageContext.request.contextPath}/FreeDocument" class="menu-item ${fn:contains(pageContext.request.requestURI, 'FreeDocument') ? 'active' : ''}">
             <img src="assets/images/Icon/tai lieu mien phi.svg" class="icon" alt="Tài liệu miễn phí"> Tài liệu miễn phí
         </a>
@@ -76,21 +71,21 @@
         <a href="${pageContext.request.contextPath}/quizList" class="menu-item ${fn:contains(pageContext.request.requestURI, 'quizList') ? 'active' : ''}">
             <img src="assets/images/Icon/News.svg" class="icon" alt="Bài kiểm tra"> Bài kiểm tra
         </a>
-        <a href="${pageContext.request.contextPath}/profile.jsp" class="menu-item ${fn:endsWith(pageContext.request.requestURI, 'profile.jsp') ? 'active' : ''}">
+        <a href="${pageContext.request.contextPath}/profile.jsp" class="menu-item ${fn:endsWith(pageContext.request.requestURI, 'profile') ? 'active' : ''}">
             <img src="assets/images/Icon/quan ly tai khoan.svg" class="icon" alt="Quản lý tài khoản"> Quản lý tài khoản
         </a>
         <a href="${pageContext.request.contextPath}/chat.jsp" class="menu-item ${fn:endsWith(pageContext.request.requestURI, 'chat.jsp') ? 'active' : ''}">
             <img src="assets/images/Icon/Chat.svg" class="icon" alt="Nhắn tin"> Nhắn tin
         </a>
-        
-        <%-- SỬA 4: Sửa link Đăng xuất trỏ đến servlet Logout --%>
+        <a href="${pageContext.request.contextPath}/learningDocuments" class="menu-item ${fn:endsWith(pageContext.request.requestURI, 'learningDocuments') ? 'active' : ''}">
+    		<img src="assets/images/Icon/Book.svg" class="icon" alt="Tài liệu của tôi"> Tài liệu của tôi
+		</a>
 		<a href="${pageContext.request.contextPath}/Logout" class="menu-item">
             <img src="assets/images/Icon/Logout.svg" class="icon" alt="Đăng xuất"> Đăng xuất
         </a>
     </nav>
 </div>
 <div class="app-bar">
-    <%-- SỬA 5: Thêm contextPath cho các link ở app-bar --%>
     <a href="${pageContext.request.contextPath}/Cart"> <img class="icon-shop" src="assets/images/Icon/Shop.svg" alt="Shop Icon"> </a>
     <a href="${pageContext.request.contextPath}/chat.jsp">
         <img class="icon-chat" src="assets/images/Icon/Chat.svg" alt="Chat Icon">

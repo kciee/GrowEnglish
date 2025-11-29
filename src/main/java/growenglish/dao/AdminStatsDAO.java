@@ -25,7 +25,7 @@ public class AdminStatsDAO {
     }
 
     public int countCourses() {
-        return count("SELECT COUNT(*) FROM courses");
+        return count("SELECT COUNT(*) FROM Course");
     }
 
     public int countDocuments() {

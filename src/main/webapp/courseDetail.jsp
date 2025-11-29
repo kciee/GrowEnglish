@@ -1,222 +1,174 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Intermediate</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Chi tiết khóa học</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body, html {
-            margin: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-        .container-fluid {
-            display: flex;
-            flex-direction: row;
-            min-height: 100vh;
-        }
-        .active {
-            background-color: #ff9800;
-            color: white;
-            border-radius: 8px;
-            padding: 10px;
-        }
+        body { background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif; }
         .main-content {
-            margin-left: 400px;
-            padding-top: 50px;
+            margin-left: 350px;
+            width: calc(100% - 350px);
+            padding: 40px 60px;
+            min-height: 100vh;
+            padding-bottom: 20px;
         }
-        .button {
-            background: #fb9400;
+
+        .course-header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .nav-pills .nav-link {
+            color: #555;
+            font-weight: 600;
             border-radius: 50px;
-            padding: 10px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
+            padding: 10px 25px;
+            margin-right: 10px;
         }
-        .btn-toggle {
-            border: 1px solid #fb9400;
-            background-color: white;
-            color: #fb9400;
-            font-weight: bold;
+        .nav-pills .nav-link.active {
+            background-color: #fb9400 !important;
+            color: white !important;
         }
-        .btn-toggle.btn-orange {
+
+        .content-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            min-height: 300px;
+        }
+
+        .course-sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 20px;
+        }
+        
+        .btn-enroll {
             background-color: #fb9400;
             color: white;
-        }
-        .btn-icon img, .btn-search img {
-            width: 24px;
-            height: 24px;
-        }
-        .btn-search span {
             font-weight: bold;
-        }
-        .active {
-            background-color: #fb9400;
-            color: white;
-            border-color: #fb9400;
-        }
-        .container-fluid.p-0 {
-            margin-left: 120px;
-        }
-        .container {
-            margin-left: 120px;
-        }
-        .cta-button {
-            display: block;
-            width: 200px;
-            text-align: center;;
-            background-color: #ff9800;
-            color: white;
-            padding: 10px;
-            margin: 20px auto;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-left: auto;
-            margin-right: 0;
-        }
-        .cta-button.active, .cta-button:hover {
-            background-color: #ff1234;
-            color: #fff;
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .tab {
-            background-color: #e0e0e0;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        .tab.active, .tab:hover {
-            background-color: #ff9800;
-            color: #fff;
-        }
-        .header-image img {
+            border-radius: 50px;
             width: 100%;
-            height: 300px;
-            position: relative;
-            overflow: hidden;
+            padding: 12px;
+            border: none;
+            transition: 0.3s;
         }
-        .buttons-container button:hover {
-            background-color: #f1b800;
-        }
+        .btn-enroll:hover { background-color: #e08600; color: white; }
     </style>
 </head>
 <body>
-<jsp:include page="menu.jsp"></jsp:include>
-<div class="container-fluid">
+    <jsp:include page="menu.jsp"></jsp:include>
+
     <div class="main-content">
-        <section class="header-section">
-            <div class="header-content">
-                <div class="header-image">
-                    <img src="assets/images/banner1.png" alt="Student Image">
+        <a href="${pageContext.request.contextPath}/courses" class="text-decoration-none text-muted mb-3 d-inline-block">
+    <i class="fas fa-arrow-left"></i> Quay lại danh sách
+</a>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="course-header d-flex align-items-center">
+                    <img src="assets/images/Card.svg" alt="Course" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover;" 
+                         onerror="this.src='https://via.placeholder.com/100'">
+                    <div class="ms-4">
+                        <h2 class="fw-bold mb-2">IELTS Intermediate</h2>
+                        <p class="text-muted mb-0">Khóa học chuyên sâu giúp bạn chinh phục band điểm 6.5+</p>
+                        <div class="d-flex gap-3 mt-2 text-sm text-muted">
+                            <span><i class="far fa-clock"></i> 3 tháng</span>
+                            <span><i class="far fa-user"></i> 150 học viên</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav nav-pills mb-4" id="courseTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active" onclick="switchTab('overview', this)">Tổng quan</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" onclick="switchTab('curriculum', this)">Lộ trình</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" onclick="switchTab('schedule', this)">Lịch học</button>
+                    </li>
+                </ul>
+
+                <div class="content-box" id="tabContent">
+                    <h4 class="fw-bold mb-3">Tổng quan khóa học</h4>
+                    <p>Khóa học được thiết kế dành cho các bạn đã có nền tảng tiếng Anh cơ bản, muốn nâng cao kỹ năng để thi IELTS.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Cam kết đầu ra 6.5+</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Giảng viên 8.0 IELTS</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Chấm chữa bài chi tiết</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-        <div class="nav-buttons">
-            <button class="tab active" onclick="selectTab(this)">Thông tin khóa học</button>
-            <button class="tab" onclick="selectTab(this)">Lịch học</button>
-            <button class="tab" onclick="selectTab(this)">Lộ trình học tập</button>
-            <button class="tab" onclick="selectTab(this)">Cam kết sau khóa học</button>
-        </div>
-        <section class="content-section">
-            <h2>Xây dựng và phát triển vốn từ vựng cần thiết tương đương trình độ B2</h2>
-            <ul>
-                <li>Nắm vững và làm chủ nền tảng kiến thức</li>
-                <li>Nắm vững các cấu trúc từ vựng quan trọng để làm tốt các kỹ năng Reading và Listening</li>
-                <li>Tăng cường khả năng tự học và đánh giá khả năng tiếng Anh</li>
-                <li>Làm quen với các dạng bài thi mới nhất IELTS Computer Test</li>
-            </ul>
-            <div class="student-cards">
-                <img src="assets/images/${document }" alt="Student Image"
-                     style="width: 18%; height: auto;"> <img
-                    src="assets/images/banner1.png" alt="Student Image"
-                    style="width: 18%; height: auto;"> <img
-                    src="assets/images/banner1.png" alt="Student Image"
-                    style="width: 18%; height: auto;"> <img
-                    src="assets/images/banner1.png" alt="Student Image"
-                    style="width: 18%; height: auto;"> <img
-                    src="assets/images/banner1.png" alt="Student Image"
-                    style="width: 18%; height: auto;">
+
+            <div class="col-lg-4">
+                <div class="course-sidebar text-center">
+                    <h3 class="fw-bold text-warning mb-3">$199.00</h3>
+                    <button class="btn btn-enroll mb-3">Đăng ký ngay</button>
+                    <hr>
+                    <div class="text-start">
+                        <p class="mb-2"><strong>Mã khóa học:</strong> IELTS-02</p>
+                        <p class="mb-2"><strong>Trình độ:</strong> Trung cấp</p>
+                        <p class="mb-0"><strong>Ngôn ngữ:</strong> Tiếng Anh</p>
+                    </div>
+                </div>
             </div>
-            <p>${documentDetail.NoiDung}"</p>
-            <p class="price">Học phí: 6.250.000 VND / 3 tháng. Phí này đã
-                gồm tài liệu. Các bài sửa Writing do giảng viên Writing 8.5 chấm
-                dựa chính xác vào tiêu chí chấm thi. Ngoài ra, chúng tôi cũng hỗ
-                trợ tư vấn không giới hạn mọi thứ về IELTS.</p>
-            <button class="cta-button">Đăng ký ngay</button>
-        </section>
+        </div>
     </div>
-</div>
-<script>
-    function selectTab(selectedButton) {
-        document.querySelectorAll('.tab').forEach(button => {
-            button.classList.remove('active');
-        });
-        selectedButton.classList.add('active');
-        const contentSection = document.querySelector('.content-section');
-        const buttonText = selectedButton.textContent.trim()
-        let content = '';
-        switch (buttonText) {
-            case 'Thông tin khóa học':
-                content = `
-                    <h2>Xây dựng và phát triển vốn từ vựng cần thiết tương đương trình độ B2</h2>
-                    <ul>
-                        <li>Nắm vững và làm chủ nền tảng kiến thức</li>
-                        <li>Nắm vững các cấu trúc từ vựng quan trọng để làm tốt các kỹ năng Reading và Listening</li>
-                        <li>Tăng cường khả năng tự học và đánh giá khả năng tiếng Anh</li>
-                        <li>Làm quen với các dạng bài thi mới nhất IELTS Computer Test</li>
-                    </ul>
-                    <button class="cta-button">Đăng ký ngay</button>
-                `;
-                break;
-            case 'Lịch học':
-                content = `
-                    <h2>Lịch học</h2>
-        <div class="row text-center">
-            <div class="col-md-6">
-                <img src="assets/images/CardTeacher.png" alt="Schedule Image 1" class="img-fluid">
-            </div>
-            <div class="col-md-6">
-                <img src="assets/images/CardLichHoc.png" alt="Schedule Image 2" class="img-fluid">
-            </div>
-        </div>
-                `;
-                break;
-            case 'Lộ trình học tập':
-                content = `
-                    <h2>Lộ trình học tập</h2>
-                    <p>Nội dung hiện đang được cập nhật. Vui lòng quay lại sau.</p>
-                `;
-                break;
-            case 'Cam kết sau khóa học':
-                content = `
-                    <h2>Cam kết sau khóa học</h2>
-                    <img src="assets/images/Camketsauhoc.png" alt="Schedule Image 1" class="img-fluid">                `;
-                break;
-            default:
-                content = `<p>Không có nội dung nào được tìm thấy.</p>`;
+
+    <jsp:include page="footer.jsp"></jsp:include>
+
+    <script>
+        function switchTab(tabName, btnElement) {
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            const contentDiv = document.getElementById('tabContent');
+            let html = '';
+            if (tabName === 'overview') {
+                html = `
+                    <h4 class="fw-bold mb-3">Tổng quan khóa học</h4>
+                    <p>Khóa học được thiết kế dành cho các bạn đã có nền tảng tiếng Anh cơ bản, muốn nâng cao kỹ năng để thi IELTS.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Cam kết đầu ra 6.5+</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Giảng viên 8.0 IELTS</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Chấm chữa bài chi tiết 1-1</li>
+                    </ul>`;
+            } else if (tabName === 'curriculum') {
+                html = `
+                    <h4 class="fw-bold mb-3">Lộ trình học tập</h4>
+                    <div class="alert alert-info">Lộ trình chi tiết gồm 24 buổi học.</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Buổi 1-6: Listening & Reading Foundation</li>
+                        <li class="list-group-item">Buổi 7-12: Writing Task 1 & Speaking Part 1</li>
+                        <li class="list-group-item">Buổi 13-20: Nâng cao kỹ năng chuyên sâu</li>
+                        <li class="list-group-item">Buổi 21-24: Luyện đề và Thi thử</li>
+                    </ul>`;
+            } else if (tabName === 'schedule') {
+                html = `
+                    <h4 class="fw-bold mb-3">Lịch khai giảng</h4>
+                    <table class="table table-bordered">
+                        <thead class="table-light"><tr><th>Lớp</th><th>Thời gian</th><th>Ngày bắt đầu</th></tr></thead>
+                        <tbody>
+                            <tr><td>IELTS-K12</td><td>19:00 - 21:00 (2-4-6)</td><td>15/10/2023</td></tr>
+                            <tr><td>IELTS-K13</td><td>18:00 - 20:00 (3-5-7)</td><td>20/10/2023</td></tr>
+                        </tbody>
+                    </table>`;
+            }
+            contentDiv.innerHTML = html;
         }
-        contentSection.innerHTML = content;
-    }
-</script>
-<jsp:include page="footer.jsp"></jsp:include>
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </script>
 </body>
 </html>

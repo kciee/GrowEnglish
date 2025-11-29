@@ -17,10 +17,8 @@ public class AdminFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-
         HttpSession session = req.getSession(false);
         Object userObj = (session != null) ? session.getAttribute("user") : null;
 
@@ -28,7 +26,6 @@ public class AdminFilter implements Filter {
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
             return;
         }
-
         if (userObj instanceof growenglish.model.User user) {
             if (!"admin".equalsIgnoreCase(user.getRole())) {
                 resp.sendRedirect(req.getContextPath() + "/403.jsp");
@@ -38,7 +35,6 @@ public class AdminFilter implements Filter {
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
             return;
         }
-
         chain.doFilter(request, response);
     }
 

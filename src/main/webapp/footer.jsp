@@ -55,18 +55,18 @@
         <div class="row">
             <div class="col text-center">
                 <h6 class="fw-bold">Follow Us</h6>
-                <a href="#"> <img src="assets/images/Icon/Social Media.svg"
-                                  alt="Icon 1" width="24" class="me-2"/>
-                </a> <a href="#"> <img
-                    src="assets/images/Icon/Social Media (1).svg" alt="Icon 2"
-                    width="24" class="me-2"/>
-            </a> <a href="#"> <img
-                    src="assets/images/Icon/Social Media (2).svg" alt="Icon 3"
-                    width="24" class="me-2"/>
-            </a> <a href="#"> <img
-                    src="assets/images/Icon/Social Media (3).svg" alt="Icon 4"
-                    width="24"/>
-            </a>
+                <a href="#"> 
+                	<img src="assets/images/Icon/Social Media.svg" alt="Icon 1" width="24" class="me-2"/>
+                </a>
+                <a href="#"> 
+                	<img src="assets/images/Icon/Social Media (1).svg" alt="Icon 2" width="24" class="me-2"/>
+            	</a> 
+            	<a href="#"> 
+            		<img src="assets/images/Icon/Social Media (2).svg" alt="Icon 3" width="24" class="me-2"/>
+            	</a> 
+            	<a href="#"> 
+            		<img src="assets/images/Icon/Social Media (3).svg" alt="Icon 4" width="24"/>
+            	</a>
             </div>
         </div>
         <div class="text-center border-top pt-3 mt-4">

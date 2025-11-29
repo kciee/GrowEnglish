@@ -14,36 +14,24 @@ import growenglish.dao.OrderDAO;
 import growenglish.model.User;
 import growenglish.model.Order;
 import growenglish.model.PaidDocument;
-/**
- * Servlet implementation class CheckoutController
- */
+
 @WebServlet("/checkout")
 public class CheckoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private OrderDAO orderDAO;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     @Override
     public void init() {
     	orderDAO = new OrderDAO();
     }
     public CheckoutController() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.sendRedirect(request.getContextPath() + "/cart.jsp");
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		User user = (session != null) ? (User) session.getAttribute("user") : null;

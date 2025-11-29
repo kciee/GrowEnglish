@@ -19,9 +19,7 @@ public class Cart extends HttpServlet {
 
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession();
-
         User user = (User) session.getAttribute("user");
         if (user != null) {
             List<PaidDocument> list = (List<PaidDocument>) session.getAttribute("paidDocuments");

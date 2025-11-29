@@ -40,13 +40,9 @@
     </form>
 </div>
 <script>
-    // Gắn sự kiện vào form
     document.querySelector('form[action="submitQuiz"]').addEventListener('submit', function() {
-        // 1. Tính thời gian đã trôi qua (tính bằng phút)
         const timeTakenMs = Date.now() - startTime;
         const timeTakenMinutes = (timeTakenMs / 1000 / 60).toFixed(2); // Làm tròn 2 chữ số
-
-        // 2. Gán giá trị vào hidden input
         document.getElementById('timeTakenInput').value = timeTakenMinutes;
     });
 </script>

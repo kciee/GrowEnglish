@@ -44,7 +44,6 @@ public class FreeDocumentDAO {
                 document.setId(resultSet.getInt("id"));
                 document.setTitle(resultSet.getString("title"));
                 document.setDescription(resultSet.getString("description"));
-                // Các tên cột này đã đúng
                 document.setImagePath(resultSet.getString("image_path"));
                 document.setVideoOrWord(resultSet.getString("video_or_word"));
                 documentList.add(document);

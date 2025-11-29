@@ -10,18 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. CĂN CHỈNH KHUNG CHÍNH */
-        body { background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif; }
-        
+        body { 
+        	background-color: #f9f9f9; 
+        	font-family: 'Segoe UI', sans-serif; 
+        }
         .main-content {
-            margin-left: 350px; /* Đẩy sang phải né Menu */
+            margin-left: 350px;
             width: calc(100% - 350px);
             padding: 40px 60px;
-            min-height: 100vh; /* Giữ chiều cao tối thiểu bằng màn hình */
-            padding-bottom: 20px; /* Khoảng cách với footer */
+            min-height: 100vh;
+            padding-bottom: 20px;
         }
-
-        /* 2. HEADER & SEARCH */
         .custom-search-bar {
             background: white;
             border-radius: 50px;
@@ -32,32 +31,49 @@
             width: 350px;
             border: 1px solid #eee;
         }
-        
         .custom-search-bar input {
-            border: none; outline: none; width: 100%; margin-left: 10px; color: #555; background: transparent;
+            border: none; 
+            outline: none; 
+            width: 100%; 
+            margin-left: 10px; 
+            color: #555; 
+            background: transparent;
         }
-
-        /* 3. NÚT BỘ LỌC - Sử dụng !important để tránh bị footer ghi đè */
+        
         .filter-group .btn {
-            border-radius: 50px; padding: 8px 24px; font-weight: 600; margin-right: 10px;
-            border: 1px solid #eee; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 50px; 
+            padding: 8px 24px; 
+            font-weight: 600; 
+            margin-right: 10px;
+            border: 1px solid #eee; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .btn-active {
-            background-color: #fb9400 !important; /* Màu vàng */
+            background-color: #fb9400 !important;
             color: white !important;
             border-color: #fb9400 !important;
         }
-        
         .btn-inactive {
             background-color: white !important;
             color: #666 !important;
         }
-
-        /* 4. CARD */
-        .card { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .card-img-top { height: 180px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;}
+        .card { 
+        	border: none; 
+       		border-radius: 15px; 
+       		box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+       		transition: 0.3s; 
+       	}
+        .card:hover { 
+        	transform: translateY(-5px); 
+        	box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+        .card-img-top { 
+        	height: 180px; 
+        	object-fit: cover; 
+        	border-top-left-radius: 15px; 
+        	border-top-right-radius: 15px;
+        }
     </style>
 </head>
 <body>

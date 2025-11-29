@@ -51,7 +51,7 @@
 </form>
 <script>
 	const wsProtocol = window.location.protocol === 'https: ' ? 'wss:' : 'ws:';
-	const wsUrl = `${wsProtocol}//${window.location.host}${pageContext.request.contextPath}/chatws`;
+	const wsUrl = `${wsProtocol}
     const socket = new WebSocket(wsUrl);
     socket.onopen = function (event) {
         console.log("Connected to WebSocket");
