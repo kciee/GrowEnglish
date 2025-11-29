@@ -12,7 +12,7 @@ import java.util.List;
 public class CourseDAO {
     public List<Course> getAllCourses() {
         List<Course> courseList = new ArrayList<>();
-        String query = "SELECT * FROM Course";
+        String query = "SELECT * FROM courses";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {

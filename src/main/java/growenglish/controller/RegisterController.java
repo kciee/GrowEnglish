@@ -8,11 +8,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-// FIX 1: Thêm import cho thư viện jBCrypt.
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
-
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
     private static final long serialVersionUID = 1L;

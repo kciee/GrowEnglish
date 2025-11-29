@@ -86,7 +86,7 @@ public class UserDAO {
             rs.getString("password"),
             rs.getString("email"),
             rs.getString("full_name"),
-            rs.getString("phone_number"),
+            rs.getString("phonenumber"),
             rs.getInt("birth_year"),
             rs.getString("avatar_url")
         );

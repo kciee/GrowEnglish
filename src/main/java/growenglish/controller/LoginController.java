@@ -25,6 +25,16 @@ public class LoginController extends HttpServlet {
         try {
             UserDAO userDAO = new UserDAO();
             User user = userDAO.getUserByUsername(username);
+            System.out.println("1. Username nhập: " + username);
+            System.out.println("2. Password nhập: " + password);
+            if (user != null ) {
+            	System.out.println("3. Hash trong DB: " + user.getPassword());
+            	System.out.println("4. Độ dài Hash: " + user.getPassword());
+            	boolean check = BCrypt.checkpw(password, user.getPassword());
+            	System.out.println("5. Kết quả so sánh: " + check);
+            } else {
+            	System.out.println("3. Không tìm thấy User trong DB!");
+            }
             if (user != null && BCrypt.checkpw(password, user.getPassword())) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);

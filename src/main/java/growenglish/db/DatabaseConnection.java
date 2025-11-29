@@ -6,35 +6,45 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    // Giữ nguyên serverName, nó đã đúng (với 2 dấu \\)
+    // 1. Tên server (Lưu ý dấu \\ là bắt buộc trong Java)
     private final static String serverName = "DESKTOP-2P01EAA\\MSSQLSERVER01"; 
     
-    // SỬA: XÓA HOÀN TOÀN BIẾN PORT
-    // private final static String port = "1433"; // <-- XÓA DÒNG NÀY
-    
+    // 2. Tên Database
     private final static String dbName = "GrowEnglish";
     
-    // Giữ nguyên thông tin đăng nhập SQL của bạn
+    // 3. Tài khoản SQL (Bạn nhớ cấu hình user sa trong SQL Server như mình dặn nhé)
     private final static String username = "sa"; 
     private final static String password = "123456"; 
-    private final static String driverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
+    // Hàm lấy kết nối (Dùng cho cả Web và Test)
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        
-        // SỬA LỖI DUY NHẤT TẠI ĐÂY:
-        // Xóa (":" + port) ra khỏi chuỗi URL.
-        String url = "jdbc:sqlserver://" + serverName + ";databaseName=" + dbName 
+        // Khai báo Driver
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+        // Chuỗi kết nối
+        String url = "jdbc:sqlserver://" + serverName 
+                   + ";databaseName=" + dbName
                    + ";encrypt=true;trustServerCertificate=true;";
-        
-        Class.forName(driverClass);
-        
-        // Logic if/else của bạn bây giờ sẽ đi vào khối 'else'
-        // và dùng tài khoản 'sa' để kết nối
-        if (username == null || username.isEmpty()) {
-            return DriverManager.getConnection(url); 
-        }
-        else {
-            return DriverManager.getConnection(url, username, password);
+
+        return DriverManager.getConnection(url, username, password);
+    }
+    
+    // ==========================================
+    // ĐÂY LÀ HÀM MAIN - BẠN ĐANG THIẾU CÁI NÀY
+    // ==========================================
+    public static void main(String[] args) {
+        System.out.println("Đang thử kết nối tới SQL Server...");
+        try {
+            Connection conn = getConnection();
+            if (conn != null) {
+                System.out.println("✅ KẾT NỐI THÀNH CÔNG!");
+                System.out.println("Server: " + serverName);
+                System.out.println("Database: " + dbName);
+                conn.close();
+            }
+        } catch (Exception e) {
+            System.err.println("❌ KẾT NỐI THẤT BẠI!");
+            e.printStackTrace();
         }
     }
 }
