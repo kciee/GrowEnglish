@@ -12,6 +12,7 @@ import java.util.List;
 
 import growenglish.dao.OrderDAO;
 import growenglish.model.User;
+import growenglish.model.Course;
 import growenglish.model.Order;
 import growenglish.model.PaidDocument;
 
@@ -39,14 +40,24 @@ public class CheckoutController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login.jsp");
 			return;
 		}
-		List<PaidDocument> cart = (List<PaidDocument>) session.getAttribute("paidDocuments");
-		if (cart == null || cart.isEmpty()) {
+		List<PaidDocument> cartDocs = (List<PaidDocument>) session.getAttribute("paidDocuments");
+		List<Course> cartCourse = (List<Course>) session.getAttribute("cartCourses");
+		boolean isDocsEmpty = (cartDocs == null || cartDocs.isEmpty());
+		boolean isCourseEmpty = (cartCourse == null || cartCourse.isEmpty());
+		if (isDocsEmpty && isCourseEmpty) {
 			response.sendRedirect(request.getContextPath() + "/home");
 			return;
 		}
 		double totalPrice = 0;
-		for (PaidDocument item : cart) {
-			totalPrice += item.getPrice();
+		if (!isDocsEmpty) {
+			for (PaidDocument item : cartDocs) {
+				totalPrice += item.getPrice();
+			}
+		}
+		if (!isCourseEmpty) {
+			for (Course item : cartCourse) {
+				totalPrice += item.getPrice();
+			}
 		}
 		Order order = new Order();
 		order.setUsername(user.getUsername());
@@ -55,6 +66,7 @@ public class CheckoutController extends HttpServlet {
 		boolean isOrderSaved = orderDAO.insertOrder(order);
 		if (isOrderSaved) {
 			session.removeAttribute("paidDocuments");
+			session.removeAttribute("cartCourses");
 			response.sendRedirect(request.getContextPath() + "/ThanhToanThanhCong.jsp");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/cart.jsp?error=payment_failed");

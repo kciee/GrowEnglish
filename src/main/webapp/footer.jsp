@@ -55,17 +55,17 @@
         <div class="row">
             <div class="col text-center">
                 <h6 class="fw-bold">Follow Us</h6>
-                <a href="#"> 
-                	<img src="assets/images/Icon/Social Media.svg" alt="Icon 1" width="24" class="me-2"/>
+                <a href="https://www.facebook.com/" target="_blank"> 
+                	<img src="assets/images/Icon/Social Media.svg" alt="Facebook" width="24" class="me-2"/>
                 </a>
-                <a href="#"> 
-                	<img src="assets/images/Icon/Social Media (1).svg" alt="Icon 2" width="24" class="me-2"/>
+                <a href="https://www.linkedin.com/" target="_blank"> 
+                	<img src="assets/images/Icon/Social Media (1).svg" alt="Linkedin" width="24" class="me-2"/>
             	</a> 
-            	<a href="#"> 
-            		<img src="assets/images/Icon/Social Media (2).svg" alt="Icon 3" width="24" class="me-2"/>
+            	<a href="https://mail.google.com/" target="_blank"> 
+            		<img src="assets/images/Icon/Social Media (2).svg" alt="Email" width="24" class="me-2"/>
             	</a> 
-            	<a href="#"> 
-            		<img src="assets/images/Icon/Social Media (3).svg" alt="Icon 4" width="24"/>
+            	<a href="https://www.youtube.com/" target="_blank"> 
+            		<img src="assets/images/Icon/Social Media (3).svg" alt="Youtube" width="24" class="me-2"/>
             	</a>
             </div>
         </div>

@@ -105,7 +105,9 @@
                                 <p class="text-warning fw-bold mt-2">$${course.price}</p>
                             </div>
                             <div class="card-footer bg-white border-0 pb-3 text-center">
-                                <a href="courseDetail.jsp?courseId=${course.id}" class="btn btn-warning rounded-pill px-4 text-white fw-bold">Xem lộ trình</a>
+                                <a href="${pageContext.request.contextPath}/course-detail?id=${course.id}" class="btn btn-warning rounded-pill px-4 text-white fw-bold">
+   									Xem lộ trình
+								</a>
                             </div>
                         </div>
                     </div>
