@@ -21,7 +21,7 @@
             width: 100%;
         }
         .main-content {
-            margin-left: 300px;
+            margin-left: 350px;
             padding-top: 80px;
             width: 100%;
         }
