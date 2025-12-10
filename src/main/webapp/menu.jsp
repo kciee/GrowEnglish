@@ -4,6 +4,13 @@
 <%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <head>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
         .sidebar {
             position: fixed;
             background-color: #FFF4E5;
@@ -17,11 +24,38 @@
             top: 0;
             bottom: 0;
         }
+        .logo {
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+            text-decoration: none;
+            color: black;
+        }
+        .menu-item:hover {
+            color: #ff9800;
+        }
+        .active {
+            background-color: #ff9800;
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        img.icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+        }
         .app-bar {
             position: fixed;
             top: 0;
             right: 0;
-            width: calc(100% - 350px);
+            width: calc(100% - 300px);
             padding: 10px 20px;
             display: flex;
             justify-content: flex-end;
@@ -29,22 +63,24 @@
             gap: 16px;
             z-index: 1000;
         }
-        .logout-button {
-            background: none;
-            border: none;
-            padding: 0;
-            margin: 0;
-            font: inherit;
-            color: black;
-            cursor: pointer;
-            text-align: left;
-            width: 100%;
+        .icon-shop, .icon-chat, .icon-noti {
+            width: 24px;
+            height: 24px;
+        }
+        .button {
+            background: #fb9400;
+            border-radius: 50px;
+            padding: 10px 24px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
         }
-        .logout-button:hover {
-            color: #ff9800;
+        .avatar {
+            height: 35px;
+            width: 35px;
         }
     </style>
 </head>

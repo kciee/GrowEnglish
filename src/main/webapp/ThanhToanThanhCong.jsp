@@ -1,47 +1,88 @@
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thanh Toán Thành Công</title>
-    <meta http-equiv="refresh" content="3;url=${pageContext.request.contextPath}/index.jsp"/>
+    <title>Thanh toán thành công</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body {
-            font-family: Poppins, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f4f4f9;
-        }
-        .message-container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            padding: 100px 40px;
-        }
-        h1 {
-            color: #28a745;
-            margin: 0 0 20px;
-        }
-        p {
-            color: #555;
-            font-size: 16px;
-        }
+        body { background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif; }
+        
+        /* Layout chuẩn: Né menu 350px */
         .main-content {
             margin-left: 350px;
-            padding-top: 50px;
+            width: calc(100% - 350px);
+            padding: 40px 60px;
+            min-height: 80vh; /* Chiều cao tối thiểu */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Căn giữa dọc */
+            align-items: center; /* Căn giữa ngang */
+            text-align: center;
         }
+
+        .success-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .icon-box {
+            width: 80px; height: 80px;
+            background: #d4edda;
+            color: #28a745;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+        }
+
+        .btn-home {
+            background-color: #fb9400;
+            color: white;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-home:hover { background-color: #e08600; color: white; }
     </style>
 </head>
-<%@include file="./menu.jsp" %>
 <body>
-<div class="main-content">
-    <div class="message-container">
-        <h1>Thanh Toán Thành Công!</h1>
-        <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
-        <p>Bạn sẽ được chuyển hướng về trang chủ trong 3 giây...</p>
+
+    <jsp:include page="menu.jsp"></jsp:include>
+
+    <div class="main-content">
+        <div class="success-card">
+            <div class="icon-box">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 class="fw-bold mb-3 text-dark">Thanh toán thành công!</h2>
+            <p class="text-muted mb-4">
+                Cảm ơn bạn đã đăng ký khóa học/tài liệu.<br>
+                Bạn có thể bắt đầu học ngay bây giờ.
+            </p>
+            
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="${pageContext.request.contextPath}/learningDocuments" class="btn btn-outline-secondary rounded-pill px-4">
+                    Vào học ngay
+                </a>
+                <a href="${pageContext.request.contextPath}/home" class="btn-home">
+                    Về trang chủ
+                </a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <jsp:include page="footer.jsp"></jsp:include>
+
 </body>
-<%@include file="./footer.jsp" %>
 </html>
