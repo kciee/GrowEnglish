@@ -72,4 +72,3 @@ public class SubmitQuizServlet extends HttpServlet {
         request.getRequestDispatcher("quizResult.jsp").forward(request, response);
     }
 }
-

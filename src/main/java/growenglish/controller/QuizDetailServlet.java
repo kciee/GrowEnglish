@@ -52,4 +52,3 @@ public class QuizDetailServlet extends HttpServlet {
         return true;
     }
 }
-

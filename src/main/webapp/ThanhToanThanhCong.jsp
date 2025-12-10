@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body { background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif; }
+        body { 
+        	background-color: #f9f9f9; 
+        	font-family: 'Segoe UI', sans-serif; 
+        }
         
-        /* Layout chuẩn: Né menu 350px */
         .main-content {
             margin-left: 350px;
             width: calc(100% - 350px);
             padding: 40px 60px;
-            min-height: 80vh; /* Chiều cao tối thiểu */
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Căn giữa dọc */
-            align-items: center; /* Căn giữa ngang */
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 

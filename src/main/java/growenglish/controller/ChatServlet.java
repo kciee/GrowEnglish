@@ -31,4 +31,3 @@ public class ChatServlet extends HttpServlet {
         request.getRequestDispatcher("chat.jsp").forward(request, response);
     }
 }
-
