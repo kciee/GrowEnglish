@@ -3,6 +3,7 @@ package growenglish.model;
 import java.sql.Timestamp;
 
 public class ChatMessage {
+<<<<<<< HEAD
     private String username;
     private String content;
     private Timestamp timestamp;
@@ -13,6 +14,20 @@ public class ChatMessage {
         this.timestamp = new Timestamp(System.currentTimeMillis());
     }
 
+=======
+    private String username; // Tên người gửi
+    private String content;  // Nội dung tin nhắn
+    private Timestamp timestamp; // Thời gian gửi tin nhắn
+
+    // Constructor
+    public ChatMessage(String username, String content) {
+        this.username = username;
+        this.content = content;
+        this.timestamp = new Timestamp(System.currentTimeMillis()); // Thời gian hiện tại khi tạo tin nhắn
+    }
+
+    // Getters và Setters
+>>>>>>> e18aefb (update)
     public String getUsername() {
         return username;
     }
@@ -37,6 +52,10 @@ public class ChatMessage {
         this.timestamp = timestamp;
     }
 
+<<<<<<< HEAD
+=======
+    // Override toString để in ra thông tin tin nhắn
+>>>>>>> e18aefb (update)
     @Override
     public String toString() {
         return "ChatMessage{" +

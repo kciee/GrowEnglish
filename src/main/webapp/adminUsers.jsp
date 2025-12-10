@@ -9,18 +9,34 @@
             margin: 20px auto;
             border-collapse: collapse;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         th, td {
             border: 1px solid #ccc;
             padding: 8px 12px;
             text-align: center;
         }
+<<<<<<< HEAD
         th {
             background-color: #f2f2f2;
         }
+=======
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+>>>>>>> e18aefb (update)
         button {
             padding: 5px 10px;
             margin: 2px;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         .action-form {
             display: inline-block;
         }

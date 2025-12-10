@@ -8,6 +8,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -15,6 +19,10 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+<<<<<<< HEAD
+=======
+        // Forward to JSP
+>>>>>>> e18aefb (update)
         request.setAttribute("message", "Welcome to Home Page! This is a GET request.");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
@@ -22,6 +30,10 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+<<<<<<< HEAD
+=======
+        // Handle form submission
+>>>>>>> e18aefb (update)
         String name = request.getParameter("name");
         if (name == null || name.isEmpty()) {
             name = "Guest";

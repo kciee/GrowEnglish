@@ -121,6 +121,7 @@ body {
 
 .cart-toolbar,
 .cart-list-product_item {
+<<<<<<< HEAD
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -132,19 +133,41 @@ body {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: left;
+=======
+	display: flex; /* Hiển thị dạng flexbox */
+	align-items: center; /* Căn giữa theo chiều dọc */
+	justify-content: space-between; /* Giãn đều các cột */
+}
+
+.name_product, .label_sanpham {
+	flex: 2; /* Chiếm không gian lớn hơn so với các cột khác */
+	max-width: 200px; /* Giới hạn chiều rộng tối đa */
+	overflow: hidden; /* Ẩn phần nội dung tràn */
+	text-overflow: ellipsis; /* Hiển thị dấu "..." cho nội dung tràn */
+	text-align: left; /* Căn lề trái để dễ đọc */
+>>>>>>> e18aefb (update)
 }
 
 .cart-toolbar div,
 .cart-list-product_item div {
+<<<<<<< HEAD
 	flex: 1;
 	text-align: center;
 	padding: 5px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+=======
+	flex: 1; /* Mỗi cột chiếm không gian bằng nhau */
+	text-align: center; /* Căn giữa nội dung */
+	padding: 5px; /* Thêm khoảng cách */
+	overflow: hidden; /* Ẩn nội dung tràn */
+	text-overflow: ellipsis; /* Hiển thị dấu ... nếu nội dung quá dài */
+>>>>>>> e18aefb (update)
 }
 
 .label_price, .label_quantity, .label-total_price,
 .label-day, .label-hour, .label-status, .label-section {
+<<<<<<< HEAD
 	flex: 1;
 }
 
@@ -155,19 +178,41 @@ input[type="checkbox"] {
 .cart-toolbar {
 	direction: flex;
 	align-items: center;
+=======
+	flex: 1;  /* Các cột khác có chiều rộng mặc định */
+}
+
+input[type="checkbox"] {
+	flex: 0.5; /* Checkbox chiếm ít không gian hơn */
+}
+
+.cart-toolbar {
+	direction: flex; /* Dùng flexbox để quản lý các cột */
+	align-items: center; /* Canh giữa nội dung theo chiều dọc */
+>>>>>>> e18aefb (update)
 	justify-content: space-between;
 	gap: 10px;
 }
 
 .label_sanpham {
+<<<<<<< HEAD
 	width: 150px;
 	text-align: left;
+=======
+	width: 150px; /* Set chiều rộng cố định */
+	text-align: left; /* Căn lề trái để dễ đọc */
+>>>>>>> e18aefb (update)
 }
 
 .label_price, .label_quantity, .label-total_price,
 .label-day, .label-hour, .label-status, .label-section {
+<<<<<<< HEAD
 	flex: 1;
 	text-align: center;
+=======
+	flex: 1; /* Các cột khác sẽ co giãn đều */
+	text-align: center; /* Căn giữa nội dung */
+>>>>>>> e18aefb (update)
 }
 
 .label-section button {
@@ -184,4 +229,8 @@ input[type="checkbox"] {
 	transition: background 0.3s;
 	border-radius: 4px;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e18aefb (update)

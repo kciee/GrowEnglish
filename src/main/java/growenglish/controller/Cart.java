@@ -19,7 +19,13 @@ public class Cart extends HttpServlet {
 
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
         HttpSession session = request.getSession();
+=======
+
+        HttpSession session = request.getSession();
+
+>>>>>>> e18aefb (update)
         User user = (User) session.getAttribute("user");
         if (user != null) {
             List<PaidDocument> list = (List<PaidDocument>) session.getAttribute("paidDocuments");
@@ -28,8 +34,15 @@ public class Cart extends HttpServlet {
         } else {
             response.sendRedirect("login.jsp");
         }
+<<<<<<< HEAD
     }
 	
+=======
+
+
+    }
+
+>>>>>>> e18aefb (update)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }

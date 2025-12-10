@@ -1,6 +1,7 @@
 package growenglish.model;
 
 public class FreeDocument {
+<<<<<<< HEAD
     private int id;
     private String title;
     private String description;
@@ -10,6 +11,19 @@ public class FreeDocument {
     public FreeDocument() {
     }
 
+=======
+    private int id;              // Mã ID tài liệu
+    private String title;        // Tiêu đề tài liệu
+    private String description;  // Mô tả chi tiết tài liệu
+    private String imagePath;    // Đường dẫn hình ảnh
+    private String videoOrWord;  // Kiểu tài liệu (Video hoặc Word)
+
+    // Constructor mặc định
+    public FreeDocument() {
+    }
+
+    // Constructor đầy đủ tham số
+>>>>>>> e18aefb (update)
     public FreeDocument(int id, String title, String description, String imagePath, String videoOrWord) {
         this.id = id;
         this.title = title;
@@ -18,6 +32,10 @@ public class FreeDocument {
         this.videoOrWord = videoOrWord;
     }
 
+<<<<<<< HEAD
+=======
+    // Getter và Setter cho các thuộc tính
+>>>>>>> e18aefb (update)
     public int getId() {
         return id;
     }

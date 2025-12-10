@@ -11,6 +11,10 @@ public class AdminStatsDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet rs = statement.executeQuery()) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
             if (rs.next()) {
                 return rs.getInt(1);
             }
@@ -25,12 +29,20 @@ public class AdminStatsDAO {
     }
 
     public int countCourses() {
+<<<<<<< HEAD
         return count("SELECT COUNT(*) FROM Course");
     }
 
     public int countDocuments() {
     	String sql = "SELECT (SELECT COUNT(*) FROM free_documents) + (SELECT COUNT(*) FROM paid_documents)";
         return count(sql);
+=======
+        return count("SELECT COUNT(*) FROM courses");
+    }
+
+    public int countDocuments() {
+        return count("SELECT COUNT(*) FROM documents");
+>>>>>>> e18aefb (update)
     }
 
     public int countQuizzes() {
@@ -46,9 +58,17 @@ public class AdminStatsDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet rs = statement.executeQuery()) {
+<<<<<<< HEAD
             if (rs.next()) {
                 return rs.getDouble(1);
             }
+=======
+
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+
+>>>>>>> e18aefb (update)
         } catch (Exception e) {
             e.printStackTrace();
         }

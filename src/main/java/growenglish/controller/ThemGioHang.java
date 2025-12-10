@@ -16,6 +16,10 @@ import java.util.List;
 
 @WebServlet(name = "CartController", value = "/them-gio-hang")
 public class ThemGioHang extends HttpServlet {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     private static final long serialVersionUID = 1L;
 
 	@Override
@@ -25,17 +29,34 @@ public class ThemGioHang extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         List<PaidDocument> list = (List<PaidDocument>) session.getAttribute("paidDocuments");
+<<<<<<< HEAD
         if (user != null) {
             if (list == null) {
                 List<PaidDocument> listPaid = new ArrayList<PaidDocument>();
+=======
+
+        if (user != null) {
+            if (list == null) {
+                List<PaidDocument> listPaid = new ArrayList<PaidDocument>();
+
+>>>>>>> e18aefb (update)
                 PaidDocument paidDocument = dao.getPaidDocumentById(id);
                 listPaid.add(paidDocument);
                 session.setAttribute("paidDocuments", listPaid);
             } else {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
                 PaidDocument paidDocument = dao.getPaidDocumentById(id);
                 list.add(paidDocument);
                 session.setAttribute("paidDocuments", list);
             }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e18aefb (update)
             response.sendRedirect("PaidDocument");
         } else {
             response.sendRedirect("login.jsp");

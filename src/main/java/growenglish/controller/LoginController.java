@@ -15,11 +15,16 @@ import org.mindrot.jbcrypt.BCrypt;
 
 @WebServlet("/auth")
 public class LoginController extends HttpServlet {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     private static final long serialVersionUID = 1L;
 
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+<<<<<<< HEAD
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         try {
@@ -38,15 +43,39 @@ public class LoginController extends HttpServlet {
             if (user != null && BCrypt.checkpw(password, user.getPassword())) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
+=======
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        try {
+            UserDAO userDAO = new UserDAO();
+            User user = userDAO.getUserByUsername(username);
+
+            if (user != null && BCrypt.checkpw(password, user.getPassword())) {
+                // Đăng nhập thành công
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+
+                // ✅ Phân quyền
+>>>>>>> e18aefb (update)
                 if ("admin".equalsIgnoreCase(user.getRole())) {
                     response.sendRedirect(request.getContextPath() + "/admin/dashboard");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/home");
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
             } else {
                 request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng!");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Lỗi hệ thống, vui lòng thử lại sau.");

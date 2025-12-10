@@ -1,6 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
+<<<<<<< HEAD
 <% String errorMessage = (String) request.getAttribute("error");%>
+=======
+<%
+    String errorMessage = (String) request.getAttribute("error");
+%>
+>>>>>>> e18aefb (update)
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -14,6 +20,10 @@
             opacity: 0;
             transform: translateY(-20px);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -25,11 +35,19 @@
 <body class="bg-gradient-to-br from-blue-100 to-purple-200 min-h-screen flex items-center justify-center px-4">
 <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md fade-in">
     <h2 class="text-3xl font-bold text-center text-purple-700 mb-6">Đăng nhập hệ thống</h2>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     <% if (errorMessage != null) { %>
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm">
         <%= errorMessage %>
     </div>
     <% } %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     <form action="${pageContext.request.contextPath}/auth" method="post" class="space-y-5">
         <div>
             <label for="username" class="block mb-1 font-medium text-gray-700">Tên đăng nhập</label>
@@ -37,17 +55,29 @@
                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
                    placeholder="Nhập tên đăng nhập..." required>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         <div>
             <label for="password" class="block mb-1 font-medium text-gray-700">Mật khẩu</label>
             <input type="password" id="password" name="password"
                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
                    placeholder="Nhập mật khẩu..." required>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         <button type="submit"
                 class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700 transition-all duration-300 shadow-md hover:shadow-xl">
             Đăng nhập
         </button>
     </form>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     <p class="text-sm text-center text-gray-600 mt-6">
         Chưa có tài khoản?
         <a href="register.jsp" class="text-purple-600 font-medium hover:underline">Đăng ký tại đây</a>

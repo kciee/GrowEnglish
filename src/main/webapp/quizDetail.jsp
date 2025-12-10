@@ -9,17 +9,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-purple-200 min-h-screen py-10 px-4">
+<<<<<<< HEAD
 	<script> const startTime = Date.now();</script>
 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
     <h1 class="text-3xl font-bold text-center text-purple-700 mb-8">Làm Bài Quiz</h1>
     <form action="submitQuiz" method="post" class="space-y-10">
         <input type="hidden" name="quizId" value="${questions[0].quizId}">
   		<input type="hidden" id="timeTakenInput" name="timeTaken" value="0">
+=======
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+    <h1 class="text-3xl font-bold text-center text-purple-700 mb-8">Làm Bài Quiz</h1>
+
+    <form action="submitQuiz" method="post" class="space-y-10">
+>>>>>>> e18aefb (update)
         <c:forEach var="question" items="${requestScope.questions}" varStatus="status">
             <div class="p-6 bg-gray-50 rounded-lg border border-gray-200 shadow-sm">
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">
                     Câu ${status.index + 1}: ${question.questionText}
                 </h2>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
                 <div class="space-y-2">
                     <c:forEach var="answer" items="${requestScope.answersMap[question.questionId]}">
                         <label class="flex items-center gap-3">
@@ -31,6 +42,10 @@
                 </div>
             </div>
         </c:forEach>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         <div class="text-center">
             <button type="submit"
                     class="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition shadow">
@@ -39,6 +54,7 @@
         </div>
     </form>
 </div>
+<<<<<<< HEAD
 <script>
     document.querySelector('form[action="submitQuiz"]').addEventListener('submit', function() {
         const timeTakenMs = Date.now() - startTime;
@@ -46,5 +62,7 @@
         document.getElementById('timeTakenInput').value = timeTakenMinutes;
     });
 </script>
+=======
+>>>>>>> e18aefb (update)
 </body>
 </html>

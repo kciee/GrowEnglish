@@ -1,8 +1,13 @@
 package growenglish.model;
 
 public class FreeDocumentDetail {
+<<<<<<< HEAD
     private int documentId;
     private String content;
+=======
+    private int documentId;  // Mã ID tài liệu
+    private String content;  // Nội dung chi tiết của tài liệu
+>>>>>>> e18aefb (update)
 
     public FreeDocumentDetail() {
     }

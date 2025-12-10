@@ -15,10 +15,18 @@
             vertical-align: top;
             background: #f5f5f5;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         .dashboard-title {
             font-size: 18px;
             font-weight: bold;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         .dashboard-value {
             font-size: 24px;
             margin-top: 10px;

@@ -12,21 +12,39 @@
             padding: 50px;
             background-color: #f4f4f9;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         .message-container {
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: inline-block;
             padding: 100px 40px;
+<<<<<<< HEAD
         }
+=======
+
+        }
+
+>>>>>>> e18aefb (update)
         h1 {
             color: #28a745;
             margin: 0 0 20px;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         p {
             color: #555;
             font-size: 16px;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
         .main-content {
             margin-left: 350px;
             padding-top: 50px;

@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<<<<<<< HEAD
+=======
+<%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
+>>>>>>> e18aefb (update)
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài liệu miễn phí</title>
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -73,10 +78,66 @@
         	object-fit: cover; 
         	border-top-left-radius: 15px; 
         	border-top-right-radius: 15px;
+=======
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/BodyTraCuu.css">
+    <style>
+        /* CSS của bạn đã tốt, giữ nguyên */
+        .primary-btn {
+            background-color: #fb9400 !important;
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 10px 24px;
+        }
+
+        .secondary-btn {
+            background-color: #ecebe9 !important;
+            color: #4f4b45;
+            border-radius: 50px;
+            padding: 10px 24px;
+        }
+
+        .icon-btn {
+            background-color: #ecebe9 !important;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar {
+            background-color: #eaeaea;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .main-content {
+            margin-left: 350px;
+            padding-top: 50px;
+        }
+
+        .header-image img {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+>>>>>>> e18aefb (update)
         }
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 
     <jsp:include page="menu.jsp"></jsp:include>
 
@@ -119,11 +180,55 @@
                             <div class="card-footer bg-white border-0 pb-3 text-center">
                                 <a href="${pageContext.request.contextPath}/FreeDocumentDetail?id=${doc.id}" 
                                    class="btn btn-warning rounded-pill px-4 text-white fw-bold">Xem chi tiết</a>
+=======
+<jsp:include page="menu.jsp"></jsp:include>
+
+<div class="main-content">
+    <section class="header-section">
+        <div class="header-content">
+            <div class="header-image">
+                <img src="${pageContext.request.contextPath}/assets/images/banner1.png" alt="Student Image">
+            </div>
+        </div>
+    </section>
+
+    <div class="container d-flex align-items-center gap-3 mt-3">
+        <a href="${pageContext.request.contextPath}/FreeDocument" class="btn primary-btn">Tất cả tài liệu</a>
+        <a href="${pageContext.request.contextPath}/learningDocuments" class="btn secondary-btn">Tài liệu đang học</a>
+        <button class="btn icon-btn">
+            <img src="${pageContext.request.contextPath}/assets/images/Icon/Filter.svg" alt="Filter" width="24">
+        </button>
+        <div class="search-bar flex-grow-1" style="width:500px;">
+            <img src="${pageContext.request.contextPath}/assets/images/Icon/Search.svg" alt="Search" width="24" class="me-2">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu..." class="form-control"
+                   onkeyup="searchDocuments()">
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row" id="documentList">
+            
+            <c:if test="${not empty listDocs}">
+                
+                <c:forEach var="doc" items="${listDocs}">
+                    <div class="col-md-4 mb-4 card-item" data-title="${doc.title}">
+                        <div class="card h-100">
+                            
+                            <img src="${pageContext.request.contextPath}/${doc.imagePath}" class="card-img-top" alt="${doc.title}">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title">${doc.title}</h5>
+                                <p class="card-text">${doc.description}</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="${pageContext.request.contextPath}/FreeDocumentDetail?id=${doc.id}" class="btn btn-warning">Xem chi tiết</a>
+>>>>>>> e18aefb (update)
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </c:if>
+<<<<<<< HEAD
             <c:if test="${empty listDocs}">
                 <div class="col-12 text-center py-5">
                     <p class="text-muted">Chưa có tài liệu nào.</p>
@@ -143,5 +248,36 @@
             });
         }
     </script>
+=======
+
+            <c:if test="${empty listDocs}">
+                <p>Không có tài liệu nào để hiển thị.</p>
+            </c:if>
+            
+        </div>
+    </div>
+</div>
+
+<jsp:include page="footer.jsp"></jsp:include>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function searchDocuments() {
+        var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+        var cards = document.querySelectorAll('.card-item');
+
+        cards.forEach(function (card) {
+            var title = card.getAttribute('data-title').toLowerCase();
+            if (title.includes(searchQuery)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+>>>>>>> e18aefb (update)
 </body>
 </html>

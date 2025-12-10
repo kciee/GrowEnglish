@@ -21,7 +21,14 @@ public class QuizListController extends HttpServlet {
         for (Quiz quiz : quizzes) {
             System.out.println(quiz.toString());
         }
+<<<<<<< HEAD
         request.setAttribute("quizzes", quizzes);
         request.getRequestDispatcher("tests.jsp").forward(request, response);
+=======
+        // Gửi danh sách bài kiểm tra đến JSP
+        request.setAttribute("quizzes", quizzes);
+        request.getRequestDispatcher("tests.jsp").forward(request, response);
+
+>>>>>>> e18aefb (update)
     }
 }

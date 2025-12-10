@@ -16,6 +16,10 @@ public class Answer {
         this.isCorrect = isCorrect;
     }
 
+<<<<<<< HEAD
+=======
+    // Getters và setters
+>>>>>>> e18aefb (update)
     public int getAnswerId() {
         return answerId;
     }

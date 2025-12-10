@@ -9,6 +9,11 @@ public class Course {
     public Course() {
     }
 
+<<<<<<< HEAD
+=======
+    ;
+
+>>>>>>> e18aefb (update)
     public Course(int id, String name, String shortDescription, double price) {
         this.id = id;
         this.name = name;

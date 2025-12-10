@@ -11,12 +11,24 @@
 <body class="bg-gradient-to-br from-green-100 via-blue-100 to-indigo-100 min-h-screen flex justify-center items-center px-4">
 <div class="bg-white p-10 rounded-2xl shadow-2xl max-w-xl w-full text-center">
     <h1 class="text-3xl font-bold text-green-600 mb-4">🎉 Kết quả của bạn 🎉</h1>
+<<<<<<< HEAD
     <div class="text-lg text-gray-700 space-y-3">
         <p><strong>Tên quiz:</strong> ${requestScope.result.quizTitle}</p>
         <p><strong>Số câu đúng:</strong> ${requestScope.correctAnswers} / ${requestScope.totalQuestions}</p>
         <p><strong>Điểm số:</strong> ${requestScope.score} / 100</p>
         <p><strong>Thời gian:</strong> ${requestScope.result.timeTaken} phút</p>
     </div>
+=======
+
+    <div class="text-lg text-gray-700 space-y-3">
+        <p><strong>Tên quiz:</strong> ${requestScope.result.quizTitle}</p>
+        <p><strong>Số câu đúng:</strong> ${requestScope.result.correctAnswers} / ${requestScope.result.totalQuestions}
+        </p>
+        <p><strong>Điểm số:</strong> ${requestScope.result.score} / 100</p>
+        <p><strong>Thời gian:</strong> ${requestScope.result.timeTaken} phút</p>
+    </div>
+
+>>>>>>> e18aefb (update)
     <div class="mt-6">
         <a href="quizList"
            class="bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition font-medium">

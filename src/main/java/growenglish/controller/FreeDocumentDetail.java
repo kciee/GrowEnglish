@@ -15,12 +15,23 @@ import java.io.IOException;
 
 @WebServlet(name = "FreeDocumentDetail", value = "/FreeDocumentDetail")
 public class FreeDocumentDetail extends HttpServlet {
+<<<<<<< HEAD
     private static final long serialVersionUID = 1L;
 	private FreeDocumentDetailDAO freeDocumentDetailDAO;
+=======
+
+    private static final long serialVersionUID = 1L;
+	private FreeDocumentDetailDAO freeDocumentDetailDAO;
+//    private LearningDocumentDAO learningDocumentDAO;
+>>>>>>> e18aefb (update)
 
     @Override
     public void init() throws ServletException {
         freeDocumentDetailDAO = new FreeDocumentDetailDAO();
+<<<<<<< HEAD
+=======
+//        learningDocumentDAO = new LearningDocumentDAO();
+>>>>>>> e18aefb (update)
     }
 
     @Override
@@ -28,6 +39,7 @@ public class FreeDocumentDetail extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String documentIdParam = request.getParameter("id");
+<<<<<<< HEAD
         if (user == null) {
         	response.sendRedirect(request.getContextPath() + "/login.jsp");
         	return;
@@ -35,13 +47,35 @@ public class FreeDocumentDetail extends HttpServlet {
         if (documentIdParam != null) {
             try {
                 int documentId = Integer.parseInt(documentIdParam);
+=======
+
+        if (documentIdParam != null) {
+            try {
+                int documentId = Integer.parseInt(documentIdParam);
+
+>>>>>>> e18aefb (update)
                 LearningDocumentDAO learningDocumentDAO = new LearningDocumentDAO();
                 LearningDocument learningDocument = new LearningDocument();
                 learningDocument.setDocumentId(documentId);
                 learningDocument.setUsername(user.getUsername());
+<<<<<<< HEAD
                 learningDocumentDAO.add(learningDocument);
                 growenglish.model.FreeDocumentDetail detail = freeDocumentDetailDAO.getDocumentDetailById(documentId);
                 if (detail != null) {
+=======
+
+
+                learningDocumentDAO.add(learningDocument);
+
+
+                // Lấy thông tin chi tiết tài liệu
+                growenglish.model.FreeDocumentDetail detail = freeDocumentDetailDAO.getDocumentDetailById(documentId);
+
+                if (detail != null) {
+
+
+                    // Chuyển tiếp đến trang chi tiết tài liệu
+>>>>>>> e18aefb (update)
                     request.setAttribute("documentDetail", detail);
                     request.getRequestDispatcher("freeDocumentsDetail.jsp").forward(request, response);
                 } else {

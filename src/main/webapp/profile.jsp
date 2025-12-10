@@ -5,17 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý tài khoản</title>
+<<<<<<< HEAD
+=======
+    <!-- Bootstrap CSS -->
+>>>>>>> e18aefb (update)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Quản lý tài khoản</h2>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     <div class="card mx-auto" style="max-width: 600px;">
         <div class="card-header bg-primary text-white">
             Thông tin tài khoản
         </div>
         <div class="card-body">
             <form action="updateProfile" method="POST" enctype="multipart/form-data">
+<<<<<<< HEAD
+=======
+                <!-- Avatar -->
+>>>>>>> e18aefb (update)
                 <div class="mb-3 text-center">
                     <img id="avatarPreview"
                          src="<%= session.getAttribute("avatar") != null ? session.getAttribute("avatar") : "https://via.placeholder.com/150" %>"
@@ -30,6 +42,11 @@
                                onchange="previewAvatar(event)">
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+
+                <!-- Họ và Tên -->
+>>>>>>> e18aefb (update)
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Họ và Tên</label>
                     <input type="text" id="fullName" name="fullName" class="form-control"
@@ -37,6 +54,11 @@
                            value="<%= session.getAttribute("fullName") != null ? session.getAttribute("fullName") : "" %>"
                            required>
                 </div>
+<<<<<<< HEAD
+=======
+
+                <!-- Năm Sinh -->
+>>>>>>> e18aefb (update)
                 <div class="mb-3">
                     <label for="birthYear" class="form-label">Năm Sinh</label>
                     <input type="number" id="birthYear" name="birthYear" class="form-control"
@@ -44,6 +66,11 @@
                            value="<%= session.getAttribute("birthYear") != null ? session.getAttribute("birthYear") : "" %>"
                            min="1900" max="2100" required>
                 </div>
+<<<<<<< HEAD
+=======
+
+                <!-- Nút Cập nhật -->
+>>>>>>> e18aefb (update)
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Cập nhật</button>
                     <button type="reset" class="btn btn-secondary">Đặt lại</button>
@@ -52,8 +79,16 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+=======
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Xem trước hình ảnh avatar
+>>>>>>> e18aefb (update)
     function previewAvatar(event) {
         const [file] = event.target.files;
         if (file) {

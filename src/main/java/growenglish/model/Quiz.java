@@ -6,6 +6,10 @@ public class Quiz {
     private String description;
 
     public Quiz() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18aefb (update)
     }
 
     public Quiz(int quizId, String quizName, String description) {
@@ -14,6 +18,10 @@ public class Quiz {
         this.description = description;
     }
 
+<<<<<<< HEAD
+=======
+    // Getters and Setters
+>>>>>>> e18aefb (update)
     public int getQuizId() {
         return quizId;
     }

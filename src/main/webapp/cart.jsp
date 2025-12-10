@@ -1,17 +1,30 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/BodyTraCuu.css">
+=======
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tra cứu</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/assets/css/BodyTraCuu.css">
+>>>>>>> e18aefb (update)
     <style>
         .main-content {
             margin-left: 350px;
             padding-top: 50px;
         }
+<<<<<<< HEAD
         .checkout-btn {
             background-color: #fb9400;
             color: white;
@@ -30,18 +43,34 @@
     </style>
 </head>
 <%@include file="./menu.jsp" %>
+=======
+    </style>
+</head>
+
+<%@include file="./menu.jsp" %>
+
+>>>>>>> e18aefb (update)
 <body>
 <div class="main-content">
     <div class="container">
         <div class="cart-toolbar">
+<<<<<<< HEAD
             <div class="label_sanpham" style="margin-left: 55px">Mã Sản Phẩm</div>
             <div class="label_price">Tên Sản Phẩm</div>
             <div class="label-total_price">Giá</div>
+=======
+            <div class="label_sanpham" style="margin-left: 55px">Mã Khóa Học</div>
+            <div class="label_price">Tên Khóa Học</div>
+
+            <div class="label-total_price">Giá</div>
+
+>>>>>>> e18aefb (update)
         </div>
 
         <div class="cart-list-product">
             <c:forEach var="paidDocument" items="${paidDocuments}">
                 <div class="cart-list-product_item">
+<<<<<<< HEAD
                     <div class="label_sanpham" style="color: #1e1f22">#DOC-${paidDocument.id}</div>
                     <div class="label_price" style="color: #1e1f22">${paidDocument.title}</div>
                     <div class="label_quantity" style="color: #FF6A00">$${paidDocument.price}</div>
@@ -79,3 +108,25 @@
 </body>
 <%@include file="./footer.jsp" %>
 </html>
+=======
+
+                    <div class="label_sanpham" style="color: #1e1f22">${paidDocument.id}</div>
+                    <div class="label_price" style="color: #1e1f22">${paidDocument.title}</div>
+                    <div class="label_quantity" style="color: #1e1f22">${paidDocument.price}</div>
+                </div>
+            </c:forEach>
+        </div>
+
+        <button type="submit" class="checkout-btn" style="margin-left: 45%"><a href="ThanhToanThanhCong.jsp">Thanh
+            Toán</a></button>
+
+    </div>
+
+</div>
+
+
+</body>
+
+<%@include file="./footer.jsp" %>
+</html>
+>>>>>>> e18aefb (update)

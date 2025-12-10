@@ -8,8 +8,14 @@ public class User {
     private int birthYear;
     private String phonenumber;
     private String avatarUrl;
+<<<<<<< HEAD
     private String role = "user";
 
+=======
+    private String role = "user"; // mặc định là user
+
+    // Constructors
+>>>>>>> e18aefb (update)
     public User() {
     }
 
@@ -81,6 +87,10 @@ public class User {
         this.role = role;
     }
 
+<<<<<<< HEAD
+=======
+    // Getters and Setters
+>>>>>>> e18aefb (update)
     public String getUsername() {
         return username;
     }
@@ -104,7 +114,10 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> e18aefb (update)
     @Override
     public String toString() {
     	return "User{" +

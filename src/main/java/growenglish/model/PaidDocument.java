@@ -1,6 +1,7 @@
 package growenglish.model;
 
 public class PaidDocument {
+<<<<<<< HEAD
     private int id;
     private String title;
     private String description;
@@ -11,6 +12,20 @@ public class PaidDocument {
     public PaidDocument() {
     }
 
+=======
+    private int id;              // Mã ID tài liệu
+    private String title;        // Tiêu đề tài liệu
+    private String description;  // Mô tả chi tiết tài liệu
+    private String imagePath;    // Đường dẫn hình ảnh
+    private String videoOrWord;  // Kiểu tài liệu (Video hoặc Word)
+    private double price;        // Giá tiền tài liệu (USD)
+
+    // Constructor mặc định
+    public PaidDocument() {
+    }
+
+    // Constructor đầy đủ tham số
+>>>>>>> e18aefb (update)
     public PaidDocument(int id, String title, String description, String imagePath, String videoOrWord, double price) {
         this.id = id;
         this.title = title;
@@ -20,6 +35,10 @@ public class PaidDocument {
         this.price = price;
     }
 
+<<<<<<< HEAD
+=======
+    // Getter và Setter cho các thuộc tính
+>>>>>>> e18aefb (update)
     public int getId() {
         return id;
     }

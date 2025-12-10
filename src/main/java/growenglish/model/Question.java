@@ -14,6 +14,10 @@ public class Question {
         this.questionText = questionText;
     }
 
+<<<<<<< HEAD
+=======
+    // Getters và setters
+>>>>>>> e18aefb (update)
     public int getQuestionId() {
         return questionId;
     }

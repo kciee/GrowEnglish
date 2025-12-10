@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+>>>>>>> e18aefb (update)
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -7,7 +12,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grow English Home</title>
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+=======
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+>>>>>>> e18aefb (update)
     <style>
         .container {
             margin-left: 120px;
@@ -16,15 +28,29 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 <footer class="bg-light text-dark pt-4" style="margin-left: 350px;">
     <div class="container">
         <div class="row mb-4">
+=======
+<!-- Footer Section -->
+<footer class="bg-light text-dark pt-4" style="margin-left: 350px;">
+    <div class="container">
+        <!-- Top Section: Logo and Contact -->
+        <div class="row mb-4">
+            <!-- Logo and Description -->
+>>>>>>> e18aefb (update)
             <div class="col-md-6">
                 <h3 class="fw-bold mb-1">G-Easy</h3>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetuer
                     adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                     laoreet dolore magna aliquam erat volutpat.</p>
             </div>
+<<<<<<< HEAD
+=======
+
+            <!-- Contact Info -->
+>>>>>>> e18aefb (update)
             <div class="col-md-6">
                 <div class="d-flex align-items-start mb-3">
                     <img src="assets/images/Icon/phone.svg" alt="Phone Icon"
@@ -52,6 +78,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="row">
             <div class="col text-center">
                 <h6 class="fw-bold">Follow Us</h6>
@@ -69,6 +96,30 @@
             	</a>
             </div>
         </div>
+=======
+
+        <!-- Social Media Section -->
+        <div class="row">
+            <div class="col text-center">
+                <h6 class="fw-bold">Follow Us</h6>
+                <a href="#"> <img src="assets/images/Icon/Social Media.svg"
+                                  alt="Icon 1" width="24" class="me-2"/>
+                </a> <a href="#"> <img
+                    src="assets/images/Icon/Social Media (1).svg" alt="Icon 2"
+                    width="24" class="me-2"/>
+            </a> <a href="#"> <img
+                    src="assets/images/Icon/Social Media (2).svg" alt="Icon 3"
+                    width="24" class="me-2"/>
+            </a> <a href="#"> <img
+                    src="assets/images/Icon/Social Media (3).svg" alt="Icon 4"
+                    width="24"/>
+            </a>
+            </div>
+        </div>
+
+
+        <!-- Bottom Section -->
+>>>>>>> e18aefb (update)
         <div class="text-center border-top pt-3 mt-4">
             <p class="mb-0">&copy; 2024 G-Easy. All Rights Reserved.</p>
         </div>
