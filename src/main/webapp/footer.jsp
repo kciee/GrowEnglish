@@ -10,8 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .container {
-            margin-left: 120px;
-            width: 1000px;
+            margin-left: 90px;
+            width: calc(100% - 90px);
         }
     </style>
 </head>

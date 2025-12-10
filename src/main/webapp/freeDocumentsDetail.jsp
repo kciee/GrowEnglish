@@ -17,7 +17,7 @@
             padding: 10px 24px;
         }
         .main-content {
-            margin-left: 350px;
+            margin-left: 90px;
             padding-top: 50px;
         }
         .header-image img {
@@ -37,13 +37,6 @@
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
 <div class="main-content">
-    <section class="header-section">
-        <div class="header-content">
-            <div class="header-image">
-                <img src="assets/images/banner1.png" alt="Student Image">
-            </div>
-        </div>
-    </section>
     <div class="container mt-5">
         <c:if test="${not empty documentDetail}">
             <div>

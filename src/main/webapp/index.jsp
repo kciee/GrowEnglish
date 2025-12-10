@@ -21,9 +21,9 @@
             width: 100%;
         }
         .main-content {
-            margin-left: 350px;
+            margin-left: 90px;
             padding-top: 80px;
-            width: 100%;
+            width: calc(100% - 90px);
         }
         .logo {
             font-weight: bold;

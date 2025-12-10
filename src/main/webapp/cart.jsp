@@ -19,9 +19,9 @@
        	}
 
         .main-content {
-            margin-left: 350px;
+            margin-left: 90px;
             padding-top: 50px;
-            width: calc(100% - 350px);
+            width: calc(100% - 90px);
             flex: 1;
         }
 

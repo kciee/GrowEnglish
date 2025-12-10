@@ -13,9 +13,9 @@
         	font-family: 'Segoe UI', sans-serif; 
         }
         .main-content {
-            margin-left: 350px; 
-            width: calc(100% - 350px); 
-            padding: 40px 60px; 
+            margin-left: 90px; 
+            width: calc(100% - 90px); 
+            padding: 70px 60px; 
             min-height: 100vh; 
             padding-bottom: 20px;
         }
