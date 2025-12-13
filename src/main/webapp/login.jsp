@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
+<<<<<<< Updated upstream
 <% String errorMessage = (String) request.getAttribute("error");%>
+=======
+<% String errorMessage = (String) request.getAttribute("error"); %>
+
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -9,27 +14,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            background-image: url('${pageContext.request.contextPath}/assets/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
         .fade-in {
             animation: fadeIn 0.6s ease-out forwards;
             opacity: 0;
             transform: translateY(-20px);
         }
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
+<<<<<<< Updated upstream
 <body class="bg-gradient-to-br from-blue-100 to-purple-200 min-h-screen flex items-center justify-center px-4">
 <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md fade-in">
     <h2 class="text-3xl font-bold text-center text-purple-700 mb-6">Đăng nhập hệ thống</h2>
+=======
+
+<body class="min-h-screen flex items-center justify-center px-4">
+
+<div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 w-full max-w-md fade-in">
+    <div class="text-center mb-6">
+        <h2 class="text-3xl font-bold text-purple-700">Đăng nhập hệ thống</h2>
+        <p class="text-gray-500 text-sm mt-2">Chào mừng bạn quay trở lại GrowEnglish</p>
+    </div>
+
+>>>>>>> Stashed changes
     <% if (errorMessage != null) { %>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm text-center">
         <%= errorMessage %>
     </div>
     <% } %>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <form action="${pageContext.request.contextPath}/auth" method="post" class="space-y-5">
         <div>
             <label for="username" class="block mb-1 font-medium text-gray-700">Tên đăng nhập</label>
@@ -48,10 +83,24 @@
             Đăng nhập
         </button>
     </form>
+<<<<<<< Updated upstream
     <p class="text-sm text-center text-gray-600 mt-6">
+=======
+    
+    <p class="mt-6 text-center text-sm text-gray-600">
+>>>>>>> Stashed changes
         Chưa có tài khoản?
-        <a href="register.jsp" class="text-purple-600 font-medium hover:underline">Đăng ký tại đây</a>
+        <a href="register.jsp" class="text-purple-600 hover:text-purple-800 font-semibold hover:underline">
+            Đăng ký ngay
+        </a>
+    </p>
+    
+     <p class="mt-2 text-center text-sm text-gray-500">
+        <a href="${pageContext.request.contextPath}/home" class="hover:text-purple-700 transition">
+            ← Quay về trang chủ
+        </a>
     </p>
 </div>
+
 </body>
 </html>
