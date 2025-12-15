@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html>
 <head>
     <title>Admin Dashboard</title>
@@ -49,7 +50,9 @@
 </div>
 <div class="dashboard-box">
     <div class="dashboard-title">Doanh thu</div>
-    <div class="dashboard-value">${totalRevenue} VNĐ</div>
+    <div class="dashboard-value">
+        <fmt:formatNumber value="${totalRevenue}" type="number" maxFractionDigits="0" /> VNĐ
+    </div>
 </div>
 </body>
 </html>
