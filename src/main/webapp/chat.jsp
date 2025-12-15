@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
->>>>>>> Stashed changes
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %> <!DOCTYPE html>
 <html lang="vi">
@@ -12,28 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-<<<<<<< Updated upstream
-        body {
-            font-family: Arial, sans-serif;
-        }
-        #messages {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            height: 300px;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-        #messages li {
-            padding: 8px;
-            margin-bottom: 10px;
-            background-color: #f1f1f1;
-            border-radius: 4px;
-        }
-        #chatForm {
-            margin-top: 20px;
-=======
         body { 
         	background-color: #f0f2f5; 
         	font-family: 'Segoe UI', sans-serif; 
@@ -164,7 +139,6 @@
             display: flex; 
             align-items: center; 
             gap: 15px;
->>>>>>> Stashed changes
         }
         #messageInput {
             flex: 1; 
@@ -206,55 +180,6 @@
     </style>
 </head>
 <body>
-<<<<<<< Updated upstream
-<h2>Chat Room</h2>
-<ul id="messages">
-    <c:forEach var="message" items="${messages}">
-        <li><strong>${message.username}</strong>: ${message.content}</li>
-    </c:forEach>
-</ul>
-<form id="chatForm">
-	<input type="hidden" name="username" id="username" value="${sessionScope.user.username}" required>
-    <input type="text" name="content" id="messageInput" placeholder="Enter your message" required>
-    <button type="submit" id="sendBtn">Send</button>
-</form>
-<script>
-	const wsProtocol = window.location.protocol === 'https: ' ? 'wss:' : 'ws:';
-	const wsUrl = `${wsProtocol}
-    const socket = new WebSocket(wsUrl);
-    socket.onopen = function (event) {
-        console.log("Connected to WebSocket");
-    };
-    socket.onmessage = function (event) {
-        const message = event.data;
-        const messageElement = document.createElement("li");
-        const parts = message.split(':', 2);
-        if (parts.length === 2)	{
-        	const strong = document.createElement('strong');
-        	strong.textContent = parts[0];
-        	messageElement.appendChild(strong);
-        	messageElement.append(': ' + parts[1]);
-        } else {
-        	messageElement.textContent = message;
-        }
-        document.getElementById("messages").appendChild(messageElement);
-    };
-    document.getElementById("chatForm").onsubmit = function (event) {
-        event.preventDefault();
-        const message = document.getElementById("messageInput").value;
-        const username = document.getElementById("username").value || "Quest";
-        socket.send(username + ": " + message);
-        const formData = new FormData();
-        formData.append("username", username);
-        formData.append("content", message);
-        fetch('chat', {
-            method: 'POST',
-            body: formData
-        });
-        document.getElementById("messageInput").value = '';
-    };
-</script>
-=======
 
     <jsp:include page="menu.jsp"></jsp:include>
 
@@ -388,6 +313,5 @@
         });
     </script>
 
->>>>>>> Stashed changes
 </body>
 </html>

@@ -191,13 +191,11 @@
             <img src="assets/images/Icon/Book.svg" class="icon" alt="My Doc"> 
             <span>Tài liệu của tôi</span>
         </a>
-
-        <a href="${pageContext.request.contextPath}/profile.jsp" 
-           class="menu-item ${fn:contains(currentURI, 'profile') ? 'active' : ''}">
-            <img src="assets/images/Icon/quan ly tai khoan.svg" class="icon" alt="Profile"> 
-            <span>Quản lý tài khoản</span>
+		<a href="${pageContext.request.contextPath}/chat.jsp" 
+           class="menu-item ${fn:contains(currentURI, 'chat') ? 'active' : ''}">
+            <img src="assets/images/Icon/Chat.svg" class="icon" alt="Chat"> 
+            <span>Chat</span>
         </a>
-
         <a href="${pageContext.request.contextPath}/Logout" class="menu-item">
             <img src="assets/images/Icon/Logout.svg" class="icon" alt="Logout"> 
             <span>Đăng xuất</span>

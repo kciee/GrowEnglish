@@ -25,14 +25,16 @@ public class ChatDAO {
     
     public static List<ChatMessage> getAllMessages() {
         List<ChatMessage> messages = new ArrayList<>();
-        String sql = "SELECT * FROM chat_messages ORDER BY timestamp DESC";
+        String sql = "SELECT * FROM chat_messages ORDER BY timestamp ASC";
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 String username = rs.getString("username");
                 String content = rs.getString("content");
-                messages.add(new ChatMessage(username, content));
+                ChatMessage msg = new ChatMessage(username, content);
+                msg.setTimestamp(rs.getTimestamp("timestamp"));
+                messages.add(msg);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,11 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
-<<<<<<< Updated upstream
-<% String errorMessage = (String) request.getAttribute("error");%>
-=======
 <% String errorMessage = (String) request.getAttribute("error"); %>
 
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -41,11 +37,6 @@
         }
     </style>
 </head>
-<<<<<<< Updated upstream
-<body class="bg-gradient-to-br from-blue-100 to-purple-200 min-h-screen flex items-center justify-center px-4">
-<div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md fade-in">
-    <h2 class="text-3xl font-bold text-center text-purple-700 mb-6">Đăng nhập hệ thống</h2>
-=======
 
 <body class="min-h-screen flex items-center justify-center px-4">
 
@@ -55,16 +46,12 @@
         <p class="text-gray-500 text-sm mt-2">Chào mừng bạn quay trở lại GrowEnglish</p>
     </div>
 
->>>>>>> Stashed changes
     <% if (errorMessage != null) { %>
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm text-center">
         <%= errorMessage %>
     </div>
     <% } %>
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     <form action="${pageContext.request.contextPath}/auth" method="post" class="space-y-5">
         <div>
             <label for="username" class="block mb-1 font-medium text-gray-700">Tên đăng nhập</label>
@@ -83,12 +70,8 @@
             Đăng nhập
         </button>
     </form>
-<<<<<<< Updated upstream
-    <p class="text-sm text-center text-gray-600 mt-6">
-=======
     
     <p class="mt-6 text-center text-sm text-gray-600">
->>>>>>> Stashed changes
         Chưa có tài khoản?
         <a href="register.jsp" class="text-purple-600 hover:text-purple-800 font-semibold hover:underline">
             Đăng ký ngay
