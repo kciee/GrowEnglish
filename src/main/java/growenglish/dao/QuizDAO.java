@@ -24,4 +24,43 @@ public class QuizDAO {
         }
         return quizzes;
     }
+    
+    public boolean insertQuiz(Quiz quiz) {
+        String sql = "INSERT INTO quizzes (name, description) VALUES (?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, quiz.getQuizName());
+            stmt.setString(2, quiz.getDescription());
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateQuiz(Quiz quiz) {
+        String sql = "UPDATE quizzes SET name = ?, description = ? WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, quiz.getQuizName());
+            stmt.setString(2, quiz.getDescription());
+            stmt.setInt(3, quiz.getQuizId());
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteQuiz(int id) {
+        String sql = "DELETE FROM quizzes WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

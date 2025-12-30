@@ -27,4 +27,37 @@ public class QuestionDAO {
         }
         return questions;
     }
+    
+    public int insertQuestion(Question question) {
+        String sql = "INSERT INTO questions (quiz_id, text) VALUES (?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) { 
+            stmt.setInt(1, question.getQuizId());
+            stmt.setString(2, question.getQuestionText());
+            int affectedRows = stmt.executeUpdate();
+            
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getInt(1); 
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public boolean deleteQuestion(int id) {
+        String sql = "DELETE FROM questions WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

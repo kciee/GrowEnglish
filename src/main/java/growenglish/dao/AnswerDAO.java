@@ -45,4 +45,17 @@ public class AnswerDAO {
         }
         return false;
     }
+    
+    public void insertAnswer(Answer answer) {
+        String sql = "INSERT INTO answers (question_id, text, is_correct) VALUES (?, ?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, answer.getQuestionId());
+            stmt.setString(2, answer.getAnswerText());
+            stmt.setBoolean(3, answer.isCorrect());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
