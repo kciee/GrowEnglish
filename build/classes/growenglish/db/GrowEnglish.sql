@@ -145,7 +145,7 @@ GO
 INSERT INTO Course (name, shortDescription, price) VALUES 
 (N'Tiếng Anh Giao Tiếp Cơ Bản', N'Khóa học dành cho người mới bắt đầu.', 50.0),
 (N'Luyện Thi TOEIC 500+', N'Cam kết đầu ra 500+ điểm.', 80.0),
-(N'IELTS Writing Masterclass', N'Chuyên sâu kỹ năng viết.', 120.0);
+(N'IELTS Writing Masterclass', N'Chuyên sâu kỹ năng viết.', 120.0),
 (N'Tiếng Anh Thương Mại (Business English)', N'Kỹ năng đàm phán, viết email trong môi trường công sở.', 150.0),
 (N'Luyện phát âm chuẩn IPA', N'Sửa ngọng, luyện giọng chuẩn Anh-Mỹ trong 30 ngày.', 40.0),
 (N'Tiếng Anh cho người mất gốc', N'Lấy lại căn bản ngữ pháp và từ vựng từ con số 0.', 60.0);
