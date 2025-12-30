@@ -1,58 +1,144 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Admin Dashboard - GrowEnglish</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .dashboard-box {
+        body { 
+        	min-height: 100vh; 
+        	display: flex; 
+        	background-color: #f8f9fa; 
+        }
+        
+        .sidebar {
             width: 250px;
-            height: 120px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin: 20px;
-            padding: 15px;
-            display: inline-block;
-            vertical-align: top;
-            background: #f5f5f5;
+            background: #212529;
+            color: white;
+            flex-shrink: 0;
+            padding-top: 20px;
         }
-        .dashboard-title {
-            font-size: 18px;
-            font-weight: bold;
+        
+        .sidebar a {
+            color: #adb5bd;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: 0.3s;
         }
-        .dashboard-value {
-            font-size: 24px;
-            margin-top: 10px;
+        
+        .sidebar a:hover, .sidebar a.active {
+            background: #343a40;
+            color: #fff;
+            border-left: 4px solid #ffc107;
+        }
+        .sidebar i { 
+        	width: 25px; 
+        	text-align: center; 
+        	margin-right: 10px; 
+        }
+        
+        .sidebar .brand {
+            text-align: center; 
+            font-size: 22px; 
+            font-weight: bold; 
+            color: white; 
+            margin-bottom: 30px;
+        }
+        
+        .content { 
+        	flex-grow: 1; 
+        	padding: 30px; 
+        	overflow-y: auto; 
+        }
+        
+        .stat-card {
+            background: white; 
+            border-radius: 10px; 
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            border-left: 5px solid;
+        }
+        
+        .text-value { 
+        	font-size: 28px; 
+        	font-weight: bold; 
+        	margin-top: 5px; 
         }
     </style>
 </head>
 <body>
-<h1>Thống kê tổng quan</h1>
-<div class="dashboard-box">
-    <div class="dashboard-title">Tổng người dùng</div>
-    <div class="dashboard-value">${totalUsers}</div>
+
+<div class="sidebar">
+    <div class="brand"><i class="fas fa-leaf text-warning"></i> GrowEnglish</div>
+    
+    <a href="${pageContext.request.contextPath}/admin/dashboard" class="active">
+        <i class="fas fa-home"></i> Tổng quan
+    </a>
+    
+    <div class="text-uppercase small text-muted px-3 mt-3 mb-2">Quản lý nội dung</div>
+    
+    <a href="${pageContext.request.contextPath}/admin/courses">
+        <i class="fas fa-graduation-cap"></i> Khóa học
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/documents">
+        <i class="fas fa-book"></i> Tài liệu (Free)
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/quizzes">
+        <i class="fas fa-tasks"></i> Bài thi & Câu hỏi
+    </a>
+    
+    <div class="text-uppercase small text-muted px-3 mt-3 mb-2">Hệ thống</div>
+    
+    <a href="${pageContext.request.contextPath}/admin/users">
+        <i class="fas fa-users"></i> Người dùng
+    </a>
+    <a href="${pageContext.request.contextPath}/home" target="_blank">
+        <i class="fas fa-external-link-alt"></i> Xem trang chủ
+    </a>
+    <a href="${pageContext.request.contextPath}/Logout" class="text-danger mt-5">
+        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+    </a>
 </div>
-<div class="dashboard-box">
-    <div class="dashboard-title">Tổng khoá học</div>
-    <div class="dashboard-value">${totalCourses}</div>
-</div>
-<div class="dashboard-box">
-    <div class="dashboard-title">Tài liệu</div>
-    <div class="dashboard-value">${totalDocuments}</div>
-</div>
-<div class="dashboard-box">
-    <div class="dashboard-title">Bài kiểm tra</div>
-    <div class="dashboard-value">${totalQuizzes}</div>
-</div>
-<div class="dashboard-box">
-    <div class="dashboard-title">Đơn hàng</div>
-    <div class="dashboard-value">${totalOrders}</div>
-</div>
-<div class="dashboard-box">
-    <div class="dashboard-title">Doanh thu</div>
-    <div class="dashboard-value">
-        <fmt:formatNumber value="${totalRevenue}" type="number" maxFractionDigits="0" /> VNĐ
+
+<div class="content">
+    <h2 class="mb-4">Chào mừng trở lại, Admin! 👋</h2>
+    
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="stat-card" style="border-color: #0d6efd;">
+                <div class="text-muted">Tổng thành viên</div>
+                <div class="text-value text-primary">${totalUsers}</div>
+                <i class="fas fa-user float-end text-black-50 fa-2x" style="margin-top: -35px;"></i>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="stat-card" style="border-color: #198754;">
+                <div class="text-muted">Doanh thu</div>
+                <div class="text-value text-success">$${totalRevenue}</div>
+                <i class="fas fa-dollar-sign float-end text-black-50 fa-2x" style="margin-top: -35px;"></i>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card" style="border-color: #ffc107;">
+                <div class="text-muted">Khóa học</div>
+                <div class="text-value text-warning">${totalCourses}</div>
+                <i class="fas fa-graduation-cap float-end text-black-50 fa-2x" style="margin-top: -35px;"></i>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card" style="border-color: #dc3545;">
+                <div class="text-muted">Bài kiểm tra</div>
+                <div class="text-value text-danger">${totalQuizzes}</div>
+                <i class="fas fa-clipboard-check float-end text-black-50 fa-2x" style="margin-top: -35px;"></i>
+            </div>
+        </div>
     </div>
 </div>
+
 </body>
 </html>
