@@ -130,4 +130,31 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+    
+    public boolean checkEmailExist(String email) {
+        String query = "SELECT count(*) FROM Users WHERE email = ?"; // Sửa tên bảng Users nếu cần
+        try (Connection conn = new DBContext().getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void updatePasswordByEmail(String email, String newPassword) {
+        String query = "UPDATE Users SET password = ? WHERE email = ?";
+        try (Connection conn = new DBContext().getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, newPassword); 
+            ps.setString(2, email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

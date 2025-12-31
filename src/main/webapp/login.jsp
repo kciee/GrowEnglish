@@ -65,6 +65,11 @@
                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
                    placeholder="Nhập mật khẩu..." required>
         </div>
+        <div class="d-flex justify-content-end mb-3">
+    		<a href="forgotPassword.jsp" class="text-decoration-none" style="font-size: 14px; color: #6c757d;">
+        		Quên mật khẩu?
+    		</a>
+		</div>
         <button type="submit"
                 class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700 transition-all duration-300 shadow-md hover:shadow-xl">
             Đăng nhập
