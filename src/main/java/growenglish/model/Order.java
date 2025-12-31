@@ -1,6 +1,6 @@
 package growenglish.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Order {
 	private int id;

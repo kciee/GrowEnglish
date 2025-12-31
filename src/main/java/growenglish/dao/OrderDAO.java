@@ -1,10 +1,12 @@
 package growenglish.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
 import growenglish.db.DatabaseConnection;
 import growenglish.model.Order;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDAO {
 	public boolean insertOrder(Order order) {
@@ -20,5 +22,25 @@ public class OrderDAO {
 				e.printStackTrace();
 				return false;
 			}
+	}
+	
+	public List<Order> getOrdersByUsername(String username) {
+	    List<Order> list = new ArrayList<>();
+	    String sql = "SELECT * FROM orders WHERE username = ? ORDER BY order_date DESC";
+	    try (Connection conn = DatabaseConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+	        ps.setString(1, username);
+	        ResultSet rs = ps.executeQuery();
+	        while (rs.next()) {
+	            Order o = new Order();
+	            o.setId(rs.getInt("id"));
+	            o.setUsername(rs.getString("username"));
+	            o.setTotalPrice(rs.getDouble("total_price"));
+	            o.setStatus(rs.getString("status"));
+	            o.setOrderDate(rs.getTimestamp("order_date"));
+	            list.add(o);
+	        }
+	    } catch (Exception e) { e.printStackTrace(); }
+	    return list;
 	}
 }
