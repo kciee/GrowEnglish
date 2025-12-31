@@ -1,4 +1,4 @@
-package growenglish.model;
+package growenglish.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBContext {
     public Connection getConnection() throws Exception {
         String serverName = "localhost";
-        String dbName = "GrowEnglish1";
+        String dbName = "GrowEnglish";
         String portNumber = "1433"; 
         String userID = "sa";
         String password = "123456";

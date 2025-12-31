@@ -132,7 +132,7 @@ public class UserDAO {
     }
     
     public boolean checkEmailExist(String email) {
-        String query = "SELECT count(*) FROM Users WHERE email = ?"; // Sửa tên bảng Users nếu cần
+        String query = "SELECT count(*) FROM Users WHERE email = ?";
         try (Connection conn = new DBContext().getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, email);

@@ -2,6 +2,8 @@ package growenglish.controller;
 
 import java.io.IOException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import growenglish.dao.UserDAO;
 import growenglish.model.EmailUtility;
 import jakarta.servlet.ServletException;
@@ -18,7 +20,8 @@ public class ForgotPasswordController extends HttpServlet {
         
         if (dao.checkEmailExist(email)) {
             String newPass = "Grow" + (int)(Math.random() * 10000);
-            dao.updatePasswordByEmail(email, newPass); 
+            String hashedPass = BCrypt.hashpw(newPass, BCrypt.gensalt());
+            dao.updatePasswordByEmail(email, hashedPass);
             try {
                 EmailUtility.sendEmail(email, "Cấp lại mật khẩu GrowEnglish", 
                     "Mật khẩu mới của bạn là: " + newPass + "\nVui lòng đăng nhập và đổi lại ngay.");
