@@ -2,8 +2,10 @@ package growenglish.controller;
 
 import growenglish.dao.FreeDocumentDAO;
 import growenglish.dao.LearningDocumentDAO;
+import growenglish.dao.PaidDocumentDAO;
 import growenglish.model.FreeDocument;
 import growenglish.model.LearningDocument;
+import growenglish.model.PaidDocument;
 import growenglish.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -32,11 +34,21 @@ public class LearningDocumentsController extends HttpServlet {
         LearningDocumentDAO dao = new LearningDocumentDAO();
         List<LearningDocument> learningDocumentList = dao.getIdDocumentByUsername(user.getUsername());
         List<FreeDocument> listFreeDocument = new ArrayList<FreeDocument>();
+        List<PaidDocument> listPaidDocument = new ArrayList<>();
+        PaidDocumentDAO paidDao = new PaidDocumentDAO();
         for (LearningDocument learningDocument : learningDocumentList) {
-            FreeDocument freeDocument = freeDocumentDAO.getFreeDocumentById(learningDocument.getDocumentId());
-            listFreeDocument.add(freeDocument);
+        	FreeDocument freeDoc = freeDocumentDAO.getFreeDocumentById(learningDocument.getDocumentId());
+            if (freeDoc != null) {
+                listFreeDocument.add(freeDoc);
+            } else {
+                PaidDocument paidDoc = paidDao.getPaidDocumentById(learningDocument.getDocumentId());
+                if (paidDoc != null) {
+                    listPaidDocument.add(paidDoc);
+                }
+            }
         }
         session.setAttribute("listFreeDocument", listFreeDocument);
+        session.setAttribute("listPaidDocument", listPaidDocument);
         request.getRequestDispatcher("learningDocuments.jsp").forward(request, response);
     }
 

@@ -85,12 +85,10 @@
                     	</tr>
                 	</thead>
                 	<tbody>
-                    	<%-- Kiểm tra nếu cả 2 danh sách đều rỗng --%>
                     	<c:if test="${empty paidDocuments and empty cartCourses}">
                          	<tr><td colspan="4" class="text-center py-5 text-muted">Giỏ hàng của bạn đang trống!</td></tr>
                     	</c:if>
 
-                    	<%-- 1. Hiển thị Tài liệu (PaidDocuments) --%>
                     	<c:forEach items="${paidDocuments}" var="d">
                         	<tr>
                             	<td>
@@ -104,13 +102,11 @@
                             	<td><span class="badge bg-info text-dark">Tài liệu</span></td>
                             	<td class="fw-bold text-danger">$${d.price}</td>
                             	<td>
-                            		<%-- Lưu ý: Bạn cần tạo controller xóa (ví dụ remove-doc) --%>
                             		<a href="remove-cart?type=doc&id=${d.id}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Xóa</a>
                             	</td>
                         	</tr>
                     	</c:forEach>
 
-                    	<%-- 2. Hiển thị Khóa học (Courses) - ĐÂY LÀ PHẦN MỚI THÊM VÀO --%>
                     	<c:forEach items="${cartCourses}" var="c">
                         	<tr>
                             	<td>
@@ -124,7 +120,6 @@
                             	<td><span class="badge bg-warning text-dark">Khóa học</span></td>
                             	<td class="fw-bold text-danger">$${c.price}</td>
                             	<td>
-                            		<%-- Lưu ý: Bạn cần tạo controller xóa (ví dụ remove-course) --%>
                             		<a href="remove-cart?type=course&id=${c.id}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Xóa</a>
                             	</td>
                         	</tr>
@@ -132,12 +127,10 @@
                 	</tbody>
             	</table>
             	
-            	<%-- Nút thanh toán chỉ hiện khi có ít nhất 1 sản phẩm --%>
             	<c:if test="${not empty paidDocuments or not empty cartCourses}">
                 	<div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
                 		<div class="h5">
                 			Tổng cộng: <span class="text-danger fw-bold fs-4">
-                				<%-- Tính tổng tiền đơn giản ngay tại view hoặc truyền từ Controller --%>
                 				<c:set var="total" value="${0}"/>
                 				<c:forEach items="${paidDocuments}" var="item"><c:set var="total" value="${total + item.price}"/></c:forEach>
                 				<c:forEach items="${cartCourses}" var="item"><c:set var="total" value="${total + item.price}"/></c:forEach>
