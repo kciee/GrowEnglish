@@ -95,9 +95,9 @@ public class CheckoutController extends HttpServlet {
             }
 			session.removeAttribute("paidDocuments");
 			session.removeAttribute("cartCourses");
-			response.sendRedirect("/ThanhToanThanhCong.jsp");
+			response.sendRedirect(request.getContextPath() + "/ThanhToanThanhCong.jsp");
 		} else {
-			response.sendRedirect("/cart.jsp?error=payment_failed");
+			response.sendRedirect(request.getContextPath() + "/cart.jsp?error=payment_failed");
 		}
 	}
 
