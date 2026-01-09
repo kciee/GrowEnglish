@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+<<<<<<< HEAD
 @WebServlet("/learn")
 public class LearnCourseController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,5 +55,53 @@ public class LearnCourseController extends HttpServlet {
         req.setAttribute("currentLesson", currentLesson);
 
         req.getRequestDispatcher("/learnCourse.jsp").forward(req, resp);
+=======
+@WebServlet("/learn-course")
+public class LearnCourseController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+        try {
+            int courseId = Integer.parseInt(request.getParameter("id"));
+            LessonDAO lessonDAO = new LessonDAO();
+            CourseDAO courseDAO = new CourseDAO();
+            boolean hasBought = lessonDAO.hasUserBoughtCourse(user.getUsername(), courseId);
+            if (!hasBought && !"admin".equalsIgnoreCase(user.getRole())) {
+                response.sendRedirect("course-detail?id=" + courseId + "&error=not_bought");
+                return;
+            }
+            Course course = courseDAO.getCourseById(courseId);
+            List<Lesson> lessons = lessonDAO.getLessonsByCourseId(courseId);
+            String currentLessonIdParam = request.getParameter("lessonId");
+            Lesson currentLesson = null;
+            if (lessons != null && !lessons.isEmpty()) {
+                if (currentLessonIdParam != null) {
+                    int currentLessonId = Integer.parseInt(currentLessonIdParam);
+                    for (Lesson l : lessons) {
+                        if (l.getId() == currentLessonId) {
+                            currentLesson = l;
+                            break;
+                        }
+                    }
+                } else {
+                    currentLesson = lessons.get(0);
+                }
+            }
+            request.setAttribute("course", course);
+            request.setAttribute("lessons", lessons);
+            request.setAttribute("currentLesson", currentLesson);
+            request.getRequestDispatcher("learnCourse.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("home");
+        }
+>>>>>>> de6321bd66fb65117a93e23529a15a50e37af601
     }
 }

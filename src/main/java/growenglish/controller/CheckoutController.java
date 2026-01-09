@@ -8,11 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 
+import growenglish.dao.LearningDocumentDAO;
 import growenglish.dao.OrderDAO;
+import growenglish.db.DatabaseConnection;
 import growenglish.model.User;
 import growenglish.model.Course;
+import growenglish.model.LearningDocument;
 import growenglish.model.Order;
 import growenglish.model.PaidDocument;
 
@@ -65,6 +70,29 @@ public class CheckoutController extends HttpServlet {
 		order.setStatus("success");
 		boolean isOrderSaved = orderDAO.insertOrder(order);
 		if (isOrderSaved) {
+			if (cartDocs != null && !cartDocs.isEmpty()) {
+                LearningDocumentDAO ldDao = new LearningDocumentDAO();
+                for (PaidDocument doc : cartDocs) {
+                    LearningDocument ld = new LearningDocument();
+                    ld.setUsername(user.getUsername());
+                    ld.setDocumentId(doc.getId());
+                    ldDao.add(ld); 
+                }
+            }
+            if (cartCourse != null && !cartCourse.isEmpty()) {
+                try (Connection conn = DatabaseConnection.getConnection()) {
+                    String sql = "INSERT INTO user_courses (username, course_id) VALUES (?, ?)";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    for (Course c : cartCourse) {
+                        ps.setString(1, user.getUsername());
+                        ps.setInt(2, c.getId());
+                        ps.addBatch();
+                    }
+                    ps.executeBatch();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 			session.removeAttribute("paidDocuments");
 			session.removeAttribute("cartCourses");
 			response.sendRedirect(request.getContextPath() + "/ThanhToanThanhCong.jsp");

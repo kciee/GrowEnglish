@@ -94,6 +94,9 @@
     <a href="${pageContext.request.contextPath}/admin/users">
         <i class="fas fa-users"></i> Người dùng
     </a>
+    <a href="${pageContext.request.contextPath}/admin/orders">
+    	<i class="fas fa-shopping-cart"></i> Đơn hàng
+    </a>
     <a href="${pageContext.request.contextPath}/home" target="_blank">
         <i class="fas fa-external-link-alt"></i> Xem trang chủ
     </a>

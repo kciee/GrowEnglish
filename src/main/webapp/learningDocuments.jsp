@@ -95,6 +95,32 @@
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <h4 class="mb-3 text-warning">Tài liệu VIP đã mua</h4>
+    		<c:if test="${not empty listPaidDocument}">
+        		<c:forEach var="doc" items="${listPaidDocument}">
+            		<div class="col-md-3 mb-4 card-item" data-title="${doc.title}">
+                		<div class="card h-100 shadow-sm border-0">
+                    		<img src="${doc.imagePath}" class="card-img-top" alt="${doc.title}" 
+                         		style="height: 180px; object-fit: cover;">
+                    		<div class="card-body">
+                        		<h5 class="fw-bold mb-2">${doc.title}</h5>
+                        		<p class="text-muted small text-truncate">${doc.description}</p>
+                    		</div>
+                    		<div class="card-footer bg-white border-0 pb-3 text-center">
+                        		<a href="PaidDocumentDetail?id=${doc.id}" class="btn btn-warning text-white rounded-pill px-4 fw-bold w-100">
+                           			 Vào học ngay
+                        		</a>
+                    		</div>
+                		</div>
+            		</div>
+        		</c:forEach>
+    		</c:if>
+    		<c:if test="${empty listPaidDocument}">
+        		<p class="text-muted">Bạn chưa mua tài liệu VIP nào.</p>
+    		</c:if>
+		</div>
+		<hr>
+		<h4 class="mb-3 text-primary">Tài liệu miễn phí</h4>
             <c:if test="${not empty listFreeDocument}">
                 <c:forEach var="doc" items="${listFreeDocument}">
                     <div class="col card-item" data-title="${doc.title}">

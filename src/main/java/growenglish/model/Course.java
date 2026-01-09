@@ -5,15 +5,17 @@ public class Course {
     private String name;
     private String shortDescription;
     private double price;
-
+    private String imagePath;
+    
     public Course() {
     }
 
-    public Course(int id, String name, String shortDescription, double price) {
+    public Course(int id, String name, String shortDescription, double price, String imagePath) {
         this.id = id;
         this.name = name;
         this.shortDescription = shortDescription;
         this.price = price;
+        this.imagePath = imagePath;
     }
 
     public int getId() {
@@ -46,5 +48,13 @@ public class Course {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+    
+    public String getImagePath() {
+    	return imagePath;
+    }
+    
+    public void setImagePath(String imagePath) {
+    	this.imagePath = imagePath;
     }
 }

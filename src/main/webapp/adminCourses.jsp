@@ -152,10 +152,14 @@
                                 
                                 <td class="text-end pe-3">
                                     <button type="submit" name="action" value="update" class="btn btn-outline-primary btn-sm mb-1" title="Lưu thay đổi"><i class="fas fa-save"></i></button>
+<<<<<<< HEAD
                                     <button type="submit" name="action" value="delete" class="btn btn-outline-danger btn-sm mb-1" onclick="return confirm('Xóa khóa học này?')" title="Xóa"><i class="fas fa-trash"></i></button>
                                 	<a href="lessons?courseId=${c.id}" class="btn btn-warning btn-sm mb-1" title="Soạn bài giảng">
     									<i class="fas fa-list"></i>
 									</a>
+=======
+                                    <button type="submit" name="action" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Xóa khóa học này?')" title="Xóa"><i class="fas fa-trash"></i></button>
+>>>>>>> de6321bd66fb65117a93e23529a15a50e37af601
                                 </td>
                             </form>
                         </tr>

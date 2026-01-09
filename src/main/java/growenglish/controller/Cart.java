@@ -1,5 +1,6 @@
 package growenglish.controller;
 
+import growenglish.model.Course;
 import growenglish.model.PaidDocument;
 import growenglish.model.User;
 import jakarta.servlet.ServletException;
@@ -23,7 +24,9 @@ public class Cart extends HttpServlet {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             List<PaidDocument> list = (List<PaidDocument>) session.getAttribute("paidDocuments");
+            List<Course> listCourses = (List<Course>) session.getAttribute("cartCourses");
             request.setAttribute("paidDocuments", list);
+            request.setAttribute("cartCourses", listCourses);
             request.getRequestDispatcher("/cart.jsp").forward(request, response);
         } else {
             response.sendRedirect("login.jsp");

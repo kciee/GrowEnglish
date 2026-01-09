@@ -105,7 +105,7 @@
                     <div class="course-sidebar text-center">
                         <h3 class="fw-bold text-warning mb-3">$${course.price}</h3>
                         
-                        <a href="${pageContext.request.contextPath}/add-course?id=${course.id}" class="btn btn-enroll mb-3">
+                        <a href="${pageContext.request.contextPath}/add-course?id=${course.id}" class="btn btn-primary w-100">
                             <i class="fas fa-cart-plus"></i> Đăng ký ngay
                         </a>
                         <hr>
