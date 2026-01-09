@@ -133,7 +133,7 @@ public class UserDAO {
     
     public boolean checkEmailExist(String email) {
         String query = "SELECT count(*) FROM Users WHERE email = ?";
-        try (Connection conn = new DBContext().getConnection();
+        try (Connection conn = new DatabaseConnection().getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
@@ -148,7 +148,7 @@ public class UserDAO {
 
     public void updatePasswordByEmail(String email, String newPassword) {
         String query = "UPDATE Users SET password = ? WHERE email = ?";
-        try (Connection conn = new DBContext().getConnection();
+        try (Connection conn = new DatabaseConnection().getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, newPassword); 
             ps.setString(2, email);
