@@ -15,7 +15,6 @@ public class LessonDAO {
             ps.setInt(1, courseId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-<<<<<<< HEAD
                 list.add(new Lesson(
                     rs.getInt("id"),
                     rs.getInt("course_id"),
@@ -52,41 +51,14 @@ public class LessonDAO {
     }
     
     public boolean checkAccess(String username, int courseId) {
-=======
-                Lesson lesson = new Lesson();
-                lesson.setId(rs.getInt("id"));
-                lesson.setCourseId(rs.getInt("course_id"));
-                lesson.setTitle(rs.getString("title"));
-                lesson.setVideoUrl(rs.getString("video_url"));
-                lesson.setContent(rs.getString("content"));
-                lesson.setOrderIndex(rs.getInt("order_index"));
-                list.add(lesson);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-    
-    public boolean hasUserBoughtCourse(String username, int courseId) {
->>>>>>> de6321bd66fb65117a93e23529a15a50e37af601
         String sql = "SELECT COUNT(*) FROM user_courses WHERE username = ? AND course_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, username);
             ps.setInt(2, courseId);
             ResultSet rs = ps.executeQuery();
-<<<<<<< HEAD
             if (rs.next()) return rs.getInt(1) > 0;
         } catch (Exception e) { e.printStackTrace(); }
-=======
-            if (rs.next()) {
-                return rs.getInt(1) > 0;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
->>>>>>> de6321bd66fb65117a93e23529a15a50e37af601
         return false;
     }
 }
