@@ -73,11 +73,11 @@
                 Bạn có thể bắt đầu học ngay bây giờ.
             </p>
             
-            <div class="d-flex gap-3 justify-content-center">
-                <a href="${pageContext.request.contextPath}/learningDocuments" class="btn btn-outline-secondary rounded-pill px-4">
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                <a href="${pageContext.request.contextPath}/learningDocuments" class="btn btn-success">
                     Vào học ngay
                 </a>
-                <a href="${pageContext.request.contextPath}/home" class="btn-home">
+                <a href="${pageContext.request.contextPath}/home" class="btn btn-secondary">
                     Về trang chủ
                 </a>
             </div>
