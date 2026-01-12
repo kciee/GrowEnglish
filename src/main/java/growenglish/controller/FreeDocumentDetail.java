@@ -16,21 +16,21 @@ import java.io.IOException;
 @WebServlet(name = "FreeDocumentDetail", value = "/FreeDocumentDetail")
 public class FreeDocumentDetail extends HttpServlet {
     private static final long serialVersionUID = 1L;
-	private FreeDocumentDetailDAO freeDocumentDetailDAO;
+    private FreeDocumentDetailDAO freeDocumentDetailDAO;
 
     @Override
     public void init() throws ServletException {
         freeDocumentDetailDAO = new FreeDocumentDetailDAO();
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String documentIdParam = request.getParameter("id");
         if (user == null) {
-        	response.sendRedirect(request.getContextPath() + "/login.jsp");
-        	return;
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
         }
         if (documentIdParam != null) {
             try {
@@ -39,6 +39,7 @@ public class FreeDocumentDetail extends HttpServlet {
                 LearningDocument learningDocument = new LearningDocument();
                 learningDocument.setDocumentId(documentId);
                 learningDocument.setUsername(user.getUsername());
+                learningDocument.setType("free");
                 learningDocumentDAO.add(learningDocument);
                 growenglish.model.FreeDocumentDetail detail = freeDocumentDetailDAO.getDocumentDetailById(documentId);
                 if (detail != null) {
@@ -53,9 +54,5 @@ public class FreeDocumentDetail extends HttpServlet {
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID tài liệu không được cung cấp");
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }

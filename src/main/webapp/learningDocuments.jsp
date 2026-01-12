@@ -4,7 +4,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Tài liệu đang học</title>
+    <title>Tài liệu của tôi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -36,24 +36,6 @@
         	margin-left: 10px; 
         	background: transparent; 
         }
-        
-        .filter-group .btn { 
-        	border-radius: 50px; 
-        	padding: 8px 24px; 
-        	font-weight: 600;
-        	margin-right: 10px; 
-        	border: 1px solid #eee; 
-        }
-        .btn-active { 
-        	background-color: #fb9400 !important; 
-        	color: white !important; 
-        	border-color: #fb9400 !important; 
-        }
-        .btn-inactive { 
-        	background-color: white !important; 
-        	color: #666 !important; 
-        }
-
         .card { 
         	border: none; 
         	border-radius: 15px; 
@@ -71,80 +53,94 @@
         	border-top-left-radius: 15px; 
         	border-top-right-radius: 15px; 
         }
+        .vip-badge {
+            position: absolute; 
+            top: 10px; 
+            right: 10px;
+            background-color: #ffc107; 
+            color: #000;
+            padding: 5px 10px; 
+            border-radius: 5px;
+            font-weight: bold; 
+            font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .course-badge {
+            position: absolute; 
+            top: 10px; 
+            right: 10px;
+            background-color: #0d6efd; 
+            color: white;
+            padding: 5px 10px; 
+            border-radius: 5px;
+            font-weight: bold; 
+            font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
     <jsp:include page="menu.jsp"></jsp:include>
 
     <div class="main-content">
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-5">
             <div>
                 <h2 class="fw-bold text-dark mb-1">Tài liệu của tôi</h2>
-                <p class="text-muted m-0">Tiếp tục hành trình chinh phục tiếng Anh</p>
+                <p class="text-muted m-0">Quản lý Khóa học và Tài liệu đã sở hữu</p>
             </div>
             <div class="custom-search-bar">
                 <i class="fas fa-search text-muted"></i>
-                <input type="text" id="searchInput" placeholder="Tìm tài liệu..." onkeyup="searchMyDocs()">
+                <input type="text" id="searchInput" placeholder="Tìm khóa học, tài liệu..." onkeyup="searchMyDocs()">
             </div>
         </div>
 
-        <div class="filter-group mb-5">
-            <button class="btn btn-active">Tất cả</button>
-            <button class="btn btn-inactive">Đang học</button>
-            <button class="btn btn-inactive">Đã xong</button>
-        </div>
-
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <h4 class="mb-3 text-warning">Tài liệu VIP đã mua</h4>
-    		<c:if test="${not empty listPaidDocument}">
-        		<c:forEach var="doc" items="${listPaidDocument}">
-            		<div class="col-md-3 mb-4 card-item" data-title="${doc.title}">
-                		<div class="card h-100 shadow-sm border-0">
-                    		<img src="${doc.imagePath}" class="card-img-top" alt="${doc.title}" 
-                         		style="height: 180px; object-fit: cover;">
-                    		<div class="card-body">
-                        		<h5 class="fw-bold mb-2">${doc.title}</h5>
-                        		<p class="text-muted small text-truncate">${doc.description}</p>
-                    		</div>
-                    		<div class="card-footer bg-white border-0 pb-3 text-center">
-                        		<a href="PaidDocumentDetail?id=${doc.id}" class="btn btn-warning text-white rounded-pill px-4 fw-bold w-100">
-                           			 Vào học ngay
-                        		</a>
-                    		</div>
-                		</div>
-            		</div>
-        		</c:forEach>
-    		</c:if>
-    		<c:if test="${empty listPaidDocument}">
-        		<p class="text-muted">Bạn chưa mua tài liệu VIP nào.</p>
-    		</c:if>
-		</div>
-		<hr>
-		<h4 class="mb-3 text-primary">Tài liệu miễn phí</h4>
-            <c:if test="${not empty listFreeDocument}">
-                <c:forEach var="doc" items="${listFreeDocument}">
-                    <div class="col card-item" data-title="${doc.title}">
-                        <div class="card">
-                            <img src="${pageContext.request.contextPath}/${doc.imagePath}" class="card-img-top" 
-                                 onerror="this.src='https://via.placeholder.com/300x200?text=My+Doc'">
+        <h4 class="mb-3 text-primary"><i class="fas fa-graduation-cap"></i> Khóa học của tôi</h4>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+            <c:if test="${not empty myCourses}">
+                <c:forEach var="c" items="${myCourses}">
+                    <div class="col card-item" data-title="${c.name}">
+                        <div class="card h-100 position-relative">
+                            <span class="course-badge">COURSE</span>
+                            <img src="${c.imagePath}" class="card-img-top" alt="${c.name}" 
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=Course'">
                             <div class="card-body">
-                                <h5 class="fw-bold mb-2">${doc.title}</h5>
-                                <p class="text-muted small text-truncate">${doc.description}</p>
+                                <h5 class="fw-bold mb-2 text-truncate" title="${c.name}">${c.name}</h5>
+                                <p class="text-muted small text-truncate">${c.shortDescription}</p>
                             </div>
                             <div class="card-footer bg-white border-0 pb-3 text-center">
-                                <a href="FreeDocumentDetail?id=${doc.id}" class="btn btn-primary rounded-pill px-4 fw-bold w-100">
-                                    Tiếp tục học
+                                <a href="learn?courseId=${c.id}" class="btn btn-primary text-white rounded-pill px-4 fw-bold w-100">
+                                    <i class="fas fa-play"></i> Vào học
                                 </a>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </c:if>
-             <c:if test="${empty listFreeDocument}">
-                <div class="col-12 text-center py-5">
-                    <p class="text-muted">Bạn chưa lưu tài liệu nào.</p>
-                    <a href="FreeDocument" class="btn btn-outline-warning rounded-pill">Khám phá ngay</a>
-                </div>
+            <c:if test="${empty myCourses}">
+                <div class="col-12 text-muted"><p>Bạn chưa đăng ký khóa học nào.</p></div>
+            </c:if>
+        </div>
+        <hr class="mb-4" style="opacity: 0.1;">
+        <h4 class="mb-3 text-secondary"><i class="fas fa-book-open"></i> Tài liệu miễn phí</h4>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <c:if test="${not empty listFreeDocument}">
+                <c:forEach var="doc" items="${listFreeDocument}">
+                    <div class="col card-item" data-title="${doc.title}">
+                        <div class="card h-100">
+                            <img src="${pageContext.request.contextPath}/${doc.imagePath}" class="card-img-top" 
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=Free'">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2 text-truncate" title="${doc.title}">${doc.title}</h5>
+                                <p class="text-muted small text-truncate">${doc.description}</p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3 text-center">
+                                <a href="FreeDocumentDetail?id=${doc.id}" class="btn btn-outline-secondary rounded-pill px-4 fw-bold w-100">
+                                    Xem ngay
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
             </c:if>
         </div>
     </div>
@@ -155,7 +151,8 @@
         function searchMyDocs() {
             let q = document.getElementById('searchInput').value.toLowerCase();
             document.querySelectorAll('.card-item').forEach(c => {
-                c.style.display = c.getAttribute('data-title').toLowerCase().includes(q) ? 'block' : 'none';
+                let title = c.getAttribute('data-title').toLowerCase();
+                c.style.display = title.includes(q) ? 'block' : 'none';
             });
         }
     </script>

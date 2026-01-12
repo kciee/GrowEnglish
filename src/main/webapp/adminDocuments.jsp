@@ -137,7 +137,7 @@
                                 </td>
 
                                 <td class="text-end pe-3">
-                                    <button type="submit" name="action" value="update" class="btn btn-outline-primary btn-sm mb-1"><i class="fas fa-save"></i></button>
+                                    <button type="submit" name="action" value="update" class="btn btn-outline-primary btn-sm"><i class="fas fa-save"></i></button>
                                     <button type="submit" name="action" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Xóa tài liệu này?')"><i class="fas fa-trash"></i></button>
                                 </td>
                             </form>

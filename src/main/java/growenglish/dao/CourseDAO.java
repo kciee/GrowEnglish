@@ -32,6 +32,34 @@ public class CourseDAO {
         return courseList;
     }
     
+    public List<Course> getCoursesByUsername(String username) {
+        List<Course> courseList = new ArrayList<>();
+        String query = "SELECT c.* FROM Course c " +
+                       "JOIN user_courses uc ON c.id = uc.course_id " +
+                       "WHERE uc.username = ?";
+        
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+             
+            statement.setString(1, username);
+            
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Course course = new Course();
+                    course.setId(resultSet.getInt("id"));
+                    course.setName(resultSet.getString("name"));
+                    course.setShortDescription(resultSet.getString("shortDescription"));
+                    course.setPrice(resultSet.getDouble("price"));
+                    course.setImagePath(resultSet.getString("image_path"));
+                    courseList.add(course);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
     public Course getCourseById(int id) {
         String query = "SELECT * FROM Course WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
