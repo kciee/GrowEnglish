@@ -25,7 +25,7 @@ public class LearnCourseController extends HttpServlet {
             resp.sendRedirect("login.jsp");
             return;
         }
-        int courseId = Integer.parseInt(req.getParameter("courseId"));
+        int courseId = Ipnteger.parseInt(req.getParameter("courseId"));
         LessonDAO lessonDAO = new LessonDAO();
         CourseDAO courseDAO = new CourseDAO();
         boolean hasAccess = lessonDAO.checkAccess(user.getUsername(), courseId);
