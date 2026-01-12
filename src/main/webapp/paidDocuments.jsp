@@ -83,7 +83,7 @@
     <div class="main-content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h2 class="fw-bold text-dark mb-1">Khóa học Premium</h2>
+                <h2 class="fw-bold text-dark mb-1">Tài liệu trả phí</h2>
                 <p class="text-muted m-0">Đầu tư kiến thức, vững bước tương lai</p>
             </div>
             <div class="custom-search-bar">

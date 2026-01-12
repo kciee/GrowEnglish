@@ -121,6 +121,32 @@
             </c:if>
         </div>
         <hr class="mb-4" style="opacity: 0.1;">
+        <h4 class="mb-3 text-warning"><i class="fas fa-crown"></i> Tài liệu trả phí</h4>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+            <c:if test="${not empty listPaidDocument}">
+                <c:forEach var="doc" items="${listPaidDocument}">
+                    <div class="col card-item" data-title="${doc.title}">
+                        <div class="card h-100 position-relative">
+                            <span class="vip-badge">VIP DOC</span>
+                            <img src="${doc.imagePath}" class="card-img-top" alt="${doc.title}" 
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=VIP'">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2 text-truncate" title="${doc.title}">${doc.title}</h5>
+                                <p class="text-muted small text-truncate">${doc.description}</p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3 text-center">
+                                <a href="PaidDocumentDetail?id=${doc.id}" class="btn btn-warning text-white rounded-pill px-4 fw-bold w-100">
+                                    <i class="fas fa-book-reader"></i> Xem tài liệu
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
+            <c:if test="${empty listPaidDocument}">
+                <div class="col-12 text-muted"><p>Chưa có tài liệu VIP nào.</p></div>
+            </c:if>
+        </div>
         <h4 class="mb-3 text-secondary"><i class="fas fa-book-open"></i> Tài liệu miễn phí</h4>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
             <c:if test="${not empty listFreeDocument}">

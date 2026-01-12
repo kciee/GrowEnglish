@@ -42,12 +42,21 @@ public class LearningDocumentsController extends HttpServlet {
         List<PaidDocument> listPaidDocument = new ArrayList<>();
         for (LearningDocument ld : learningDocumentList) {
             String type = ld.getType();
+            int docId = ld.getDocumentId();
             if ("paid".equalsIgnoreCase(type)) {
-                PaidDocument paidDoc = paidDao.getPaidDocumentById(ld.getDocumentId());
+                PaidDocument paidDoc = paidDao.getPaidDocumentById(docId);
                 if (paidDoc != null) listPaidDocument.add(paidDoc);
-            } else {
-                FreeDocument freeDoc = freeDocumentDAO.getFreeDocumentById(ld.getDocumentId());
+            } else if ("free".equalsIgnoreCase(type)) {
+                FreeDocument freeDoc = freeDocumentDAO.getFreeDocumentById(docId);
                 if (freeDoc != null) listFreeDocument.add(freeDoc);
+            } else {
+                PaidDocument paidDoc = paidDao.getPaidDocumentById(docId);
+                if (paidDoc != null) {
+                    listPaidDocument.add(paidDoc);
+                } else {
+                    FreeDocument freeDoc = freeDocumentDAO.getFreeDocumentById(docId);
+                    if (freeDoc != null) listFreeDocument.add(freeDoc);
+                }
             }
         }
         session.setAttribute("myCourses", myCourses);
