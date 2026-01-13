@@ -139,4 +139,36 @@ public class CourseDAO {
             return false;
         }
     }
+    
+    public List<Course> getCoursesByPage(int page, int pageSize) {
+        List<Course> list = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+        String sql = "SELECT * FROM Course ORDER BY id OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        try (Connection conn = growenglish.db.DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, offset);
+            ps.setInt(2, pageSize);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Course(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("shortDescription"),
+                    rs.getDouble("price"),
+                    rs.getString("image_path")
+                ));
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return list;
+    }
+
+    public int getTotalCourseCount() {
+        String sql = "SELECT COUNT(*) FROM Course";
+        try (Connection conn = growenglish.db.DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) return rs.getInt(1);
+        } catch (Exception e) { e.printStackTrace(); }
+        return 0;
+    }
 }
