@@ -144,7 +144,7 @@
                 </c:forEach>
             </c:if>
             <c:if test="${empty listPaidDocument}">
-                <div class="col-12 text-muted"><p>Chưa có tài liệu VIP nào.</p></div>
+                <div class="col-12 text-muted"><p>Chưa có tài liệu trả phí nào.</p></div>
             </c:if>
         </div>
         <h4 class="mb-3 text-secondary"><i class="fas fa-book-open"></i> Tài liệu miễn phí</h4>
@@ -167,6 +167,9 @@
                         </div>
                     </div>
                 </c:forEach>
+            </c:if>
+            <c:if test="${empty listFreeDocument}">
+                <div class="col-12 text-muted"><p>Chưa có tài liệu miễn phí nào.</p></div>
             </c:if>
         </div>
     </div>
