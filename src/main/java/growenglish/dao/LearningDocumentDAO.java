@@ -69,4 +69,43 @@ public class LearningDocumentDAO {
         }
         return learningDocuments;
     }
+    
+    public boolean deleteById(int id) {
+        String sql = "DELETE FROM learning_documents WHERE id = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean deleteOneDoc(String username, int docId, String type) {
+        String sql = "DELETE TOP (1) FROM learning_documents WHERE username = ? AND DocumentId = ? AND type = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            ps.setInt(2, docId);
+            ps.setString(3, type);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public void deleteSpecificDoc(String username, int docId, String type) {
+        String sql = "DELETE TOP (1) FROM learning_documents WHERE username = ? AND DocumentId = ? AND type = ?";
+        try (Connection conn = growenglish.db.DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            ps.setInt(2, docId);
+            ps.setString(3, type);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

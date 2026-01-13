@@ -126,4 +126,17 @@ public class CourseDAO {
             return false;
         }
     }
+
+    public boolean deleteUserCourse(String username, int courseId) {
+        String sql = "DELETE FROM user_courses WHERE username = ? AND course_id = ?";
+        try (Connection conn = growenglish.db.DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            ps.setInt(2, courseId);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
