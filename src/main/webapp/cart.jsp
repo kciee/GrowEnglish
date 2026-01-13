@@ -93,8 +93,10 @@
         	<div class="tab-pane fade show active" id="cart-content">
             	<div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="m-0 fw-bold">Sản phẩm đang chọn</h4>
-                    <span class="text-muted">Đang có ${ (paidDocuments.size() ?: 0) + (cartCourses.size() ?: 0) } mục</span>
-                </div>
+					<span class="text-muted">
+					    Đang có ${ #lists.size(paidDocuments) + #lists.size(cartCourses) } mục
+					</span>                
+				</div>
 
             	<table class="table align-middle">
                 	<thead class="table-light">
