@@ -1,10 +1,11 @@
 package growenglish.dao;
 
 import growenglish.db.DatabaseConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class AdminStatsDAO {
     private int count(String sql) {
@@ -53,5 +54,20 @@ public class AdminStatsDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+    
+    public Map<String, Double> getRevenueLast7Days() {
+        Map<String, Double> data = new LinkedHashMap<>();
+        String sql = "SELECT CAST(order_date AS DATE) as Date, SUM(total_price) as Revenue " +
+                     "FROM orders WHERE order_date >= DATEADD(day, -7, GETDATE()) " +
+                     "GROUP BY CAST(order_date AS DATE) ORDER BY Date ASC";
+        try (Connection conn = growenglish.db.DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                data.put(rs.getString("Date"), rs.getDouble("Revenue"));
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return data;
     }
 }

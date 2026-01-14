@@ -92,10 +92,13 @@
     	<div class="tab-content border border-top-0 p-4 bg-white shadow-sm" id="myTabContent">
         	<div class="tab-pane fade show active" id="cart-content">
             	<div class="d-flex justify-content-between align-items-center mb-3">
+                    <%
+					    java.util.List docs = (java.util.List) request.getAttribute("paidDocuments");
+					    java.util.List courses = (java.util.List) request.getAttribute("cartCourses");
+					    int totalItems = (docs != null ? docs.size() : 0) + (courses != null ? courses.size() : 0);
+					%>
                     <h4 class="m-0 fw-bold">Sản phẩm đang chọn</h4>
-					<span class="text-muted">
-					    Đang có ${ (paidDocuments != null ? paidDocuments.size() : 0) + (cartCourses != null ? cartCourses.size() : 0) } mục
-					</span>                
+					<span class="text-muted">Đang có <%= totalItems %> mục</span>        
 				</div>
 
             	<table class="table align-middle">

@@ -2,7 +2,6 @@ package growenglish.dao;
 
 import growenglish.db.DatabaseConnection;
 import growenglish.model.PaidDocument;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,40 +26,40 @@ public class PaidDocumentDAO {
                 documentList.add(document);
             }
         } catch (Exception e) {
-            System.err.println("Lỗi khi truy vấn dữ liệu từ bảng paid_documents: " + e.getMessage());
+            e.printStackTrace();
         }
         return documentList;
     }
     
-    public boolean insertPaidDocument(PaidDocument document) {
+    public boolean insertPaidDocument(PaidDocument doc) {
         String query = "INSERT INTO paid_documents (Title, Description, ImagePath, VideoOrWord, Price) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, document.getTitle());
-            statement.setString(2, document.getDescription());
-            statement.setString(3, document.getImagePath());
-            statement.setString(4, document.getVideoOrWord());
-            statement.setDouble(5, document.getPrice());
+            statement.setString(1, doc.getTitle());
+            statement.setString(2, doc.getDescription());
+            statement.setString(3, doc.getImagePath());
+            statement.setString(4, doc.getVideoOrWord());
+            statement.setDouble(5, doc.getPrice());
             return statement.executeUpdate() > 0;
         } catch (Exception e) {
-            System.err.println("Lỗi khi thêm tài liệu trả phí: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
 
-    public boolean updatePaidDocument(PaidDocument document) {
+    public boolean updatePaidDocument(PaidDocument doc) {
         String query = "UPDATE paid_documents SET Title = ?, Description = ?, ImagePath = ?, VideoOrWord = ?, Price = ? WHERE Id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, document.getTitle());
-            statement.setString(2, document.getDescription());
-            statement.setString(3, document.getImagePath());
-            statement.setString(4, document.getVideoOrWord());
-            statement.setDouble(5, document.getPrice());
-            statement.setInt(6, document.getId());
+            statement.setString(1, doc.getTitle());
+            statement.setString(2, doc.getDescription());
+            statement.setString(3, doc.getImagePath());
+            statement.setString(4, doc.getVideoOrWord());
+            statement.setDouble(5, doc.getPrice());
+            statement.setInt(6, doc.getId());
             return statement.executeUpdate() > 0;
         } catch (Exception e) {
-            System.err.println("Lỗi khi cập nhật tài liệu trả phí: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
@@ -72,30 +71,29 @@ public class PaidDocumentDAO {
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
         } catch (Exception e) {
-            System.err.println("Lỗi khi xóa tài liệu trả phí: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
-
+    
     public PaidDocument getPaidDocumentById(int id) {
         String query = "SELECT * FROM paid_documents WHERE Id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    PaidDocument document = new PaidDocument();
-                    document.setId(resultSet.getInt("Id"));
-                    document.setTitle(resultSet.getString("Title"));
-                    document.setDescription(resultSet.getString("Description"));
-                    document.setImagePath(resultSet.getString("ImagePath"));
-                    document.setVideoOrWord(resultSet.getString("VideoOrWord"));
-                    document.setPrice(resultSet.getDouble("Price"));
-                    return document;
-                }
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return new PaidDocument(
+                    resultSet.getInt("Id"),
+                    resultSet.getString("Title"),
+                    resultSet.getString("Description"),
+                    resultSet.getString("ImagePath"),
+                    resultSet.getString("VideoOrWord"),
+                    resultSet.getDouble("Price")
+                );
             }
         } catch (Exception e) {
-            System.err.println("Lỗi khi lấy tài liệu trả phí theo ID: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
