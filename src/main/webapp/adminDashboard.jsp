@@ -90,6 +90,7 @@
     <div class="text-uppercase small text-muted px-3 mt-3 mb-2">Quản lý nội dung</div>
     <a href="${pageContext.request.contextPath}/admin/courses"><i class="fas fa-graduation-cap"></i> Khóa học</a>
     <a href="${pageContext.request.contextPath}/admin/documents"><i class="fas fa-book"></i> Tài liệu (Free)</a>
+    <a href="${pageContext.request.contextPath}/admin/paid-documents"><i class="fas fa-file-invoice-dollar me-2"></i> Tài liệu (Paid)</a>
     <a href="${pageContext.request.contextPath}/admin/quizzes"><i class="fas fa-tasks"></i> Bài thi & Câu hỏi</a>
     
     <div class="text-uppercase small text-muted px-3 mt-3 mb-2">Hệ thống</div>
