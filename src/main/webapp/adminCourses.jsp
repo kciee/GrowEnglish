@@ -98,7 +98,7 @@
             
             <div class="col-md-3">
                 <label class="form-label small text-muted">Giá ($)</label>
-                <input type="number" name="price" class="form-control" placeholder="0.0" step="0.1" required>
+                <input type="number" name="price" min="0 class="form-control" placeholder="0.0" step="0.1" required>
             </div>
             
             <div class="col-md-5">

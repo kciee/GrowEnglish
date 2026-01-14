@@ -68,41 +68,60 @@
         </div>
         <% } %>
 
-        <form action="register" method="post" class="space-y-5">
-            
-            <div>
-                <label for="username" class="block text-sm font-semibold text-gray-700 mb-1">Tên người dùng</label>
-                <input type="text" id="username" name="username"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                       placeholder="Nhập tên đăng nhập..." required>
-            </div>
-
-            <div>
-                <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
-                <input type="email" id="email" name="email"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                       placeholder="example@email.com" required>
-            </div>
-
-            <div>
-                <label for="password" class="block text-sm font-semibold text-gray-700 mb-1">Mật khẩu</label>
-                <input type="password" id="password" name="password"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                       placeholder="Nhập mật khẩu..." required>
-            </div>
-
-            <div>
-                <label for="confirmPassword" class="block text-sm font-semibold text-gray-700 mb-1">Xác nhận mật khẩu</label>
-                <input type="password" id="confirmPassword" name="confirmPassword"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                       placeholder="Nhập lại mật khẩu..." required>
-            </div>
-
-            <button type="submit"
-                    class="w-full bg-indigo-600 text-white py-2.5 rounded-lg hover:bg-indigo-700 transition duration-300 font-bold shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                Đăng ký ngay
-            </button>
-        </form>
+		<form action="register" method="post" class="space-y-5" onsubmit="return validateForm()">
+		    
+		    <div>
+		        <label for="username" class="block text-sm font-semibold text-gray-700 mb-1">Tên người dùng</label>
+		        <input type="text" id="username" name="username"
+		               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+		               placeholder="Nhập tên đăng nhập (5-20 ký tự)..." 
+		               required minlength="5" maxlength="20" pattern="[a-zA-Z0-9]+">
+		        <small class="text-gray-400 text-xs">Chỉ bao gồm chữ và số, không dấu.</small>
+		    </div>
+		
+		    <div>
+		        <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+		        <input type="email" id="email" name="email"
+		               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+		               placeholder="example@email.com" required>
+		    </div>
+		
+		    <div>
+		        <label for="password" class="block text-sm font-semibold text-gray-700 mb-1">Mật khẩu</label>
+		        <input type="password" id="password" name="password"
+		               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+		               placeholder="Tối thiểu 6 ký tự..." required minlength="6">
+		    </div>
+		
+		    <div>
+		        <label for="confirmPassword" class="block text-sm font-semibold text-gray-700 mb-1">Xác nhận mật khẩu</label>
+		        <input type="password" id="confirmPassword" name="confirmPassword"
+		               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+		               placeholder="Nhập lại mật khẩu..." required>
+		        <p id="passError" class="text-red-500 text-xs mt-1 hidden">Mật khẩu không khớp!</p>
+		    </div>
+		
+		    <button type="submit"
+		            class="w-full bg-indigo-600 text-white py-2.5 rounded-lg hover:bg-indigo-700 transition duration-300 font-bold shadow-md">
+		        Đăng ký ngay
+		    </button>
+		</form>
+		
+		<script>
+		    function validateForm() {
+		        var pass = document.getElementById("password").value;
+		        var confirmPass = document.getElementById("confirmPassword").value;
+		        var errorMsg = document.getElementById("passError");
+		
+		        if (pass !== confirmPass) {
+		            errorMsg.classList.remove("hidden");
+		            document.getElementById("confirmPassword").focus();
+		            return false;
+		        }
+		        errorMsg.classList.add("hidden");
+		        return true;
+		    }
+		</script>
 
         <p class="mt-6 text-center text-sm text-gray-600">
             Đã có tài khoản?
