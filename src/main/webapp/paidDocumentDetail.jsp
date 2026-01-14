@@ -8,7 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; }
+        body { 
+        	background-color: #f0f2f5; 
+        	font-family: 'Segoe UI', sans-serif; 
+        }
+        
         .main-content {
             margin-left: 90px;
             padding: 40px;
@@ -39,7 +43,11 @@
             background: #000;
         }
         .video-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
         }
     </style>
 </head>
@@ -66,12 +74,46 @@
                                 <iframe src="${docDetail.videoUrl}" frameborder="0" allowfullscreen></iframe>
                             </div>
                             <h4 class="fw-bold mb-3">Nội dung bài học:</h4>
+                            
                         </c:if>
 
                         <div class="doc-content">
                             ${docDetail.content}
                         </div>
-
+						<div class="mt-5 p-4 bg-white rounded shadow-sm">
+					    <h4 class="fw-bold mb-4">Đánh giá & Bình luận</h4>
+					    
+					    <form action="PaidDocumentDetail" method="post" class="mb-4">
+					        <input type="hidden" name="id" value="${docInfo.id}">
+					        <div class="mb-3">
+					            <label class="form-label fw-bold">Đánh giá sao:</label>
+					            <select name="rating" class="form-select w-auto">
+					                <option value="5">⭐⭐⭐⭐⭐ (Tuyệt vời)</option>
+					                <option value="4">⭐⭐⭐⭐ (Tốt)</option>
+					                <option value="3">⭐⭐⭐ (Bình thường)</option>
+					                <option value="2">⭐⭐ (Tệ)</option>
+					                <option value="1">⭐ (Rất tệ)</option>
+					            </select>
+					        </div>
+					        <div class="mb-3">
+					            <textarea name="comment" class="form-control" rows="3" placeholder="Chia sẻ cảm nghĩ của bạn..." required></textarea>
+					        </div>
+					        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+					    </form>
+					
+					    <hr>
+					
+					    <c:forEach var="r" items="${reviews}">
+					        <div class="d-flex mb-3">
+					            <img src="${pageContext.request.contextPath}/${r.userAvatar}" class="rounded-circle me-3" width="50" height="50" style="object-fit:cover">
+					            <div>
+					                <h6 class="fw-bold mb-0">${r.username} <span class="text-warning small ms-2">${r.rating} <i class="fas fa-star"></i></span></h6>
+					                <small class="text-muted"><fmt:formatDate value="${r.createdAt}" pattern="dd/MM/yyyy HH:mm"/></small>
+					                <p class="mt-1 mb-0">${r.comment}</p>
+					            </div>
+					        </div>
+					    </c:forEach>
+					</div>
                     </c:when>
                     <c:otherwise>
                         <div class="text-center py-5">
