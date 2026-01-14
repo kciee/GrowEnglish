@@ -74,7 +74,41 @@
         	border-top-left-radius: 15px; 
         	border-top-right-radius: 15px;
         }
-        
+
+        .pagination {
+            margin-top: 40px;
+        }
+        .page-link {
+            color: #fb9400;
+            border: none;
+            margin: 0 5px;
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .page-link:hover {
+            background-color: #ffe5ca;
+            color: #e08600;
+            transform: translateY(-2px);
+        }
+        .page-item.active .page-link {
+            background-color: #fb9400;
+            border-color: #fb9400;
+            color: white;
+            box-shadow: 0 4px 10px rgba(251, 148, 0, 0.4);
+        }
+        .page-item.disabled .page-link {
+            color: #ccc;
+            background-color: transparent;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -131,7 +165,31 @@
                 </div>
             </c:if>
         </div>
-    </div> 
+
+        <c:if test="${totalPages > 1}">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="FreeDocument?page=${currentPage - 1}" aria-label="Previous">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <li class="page-item ${currentPage == i ? 'active' : ''}">
+                            <a class="page-link" href="FreeDocument?page=${i}">${i}</a>
+                        </li>
+                    </c:forEach>
+
+                    <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="FreeDocument?page=${currentPage + 1}" aria-label="Next">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
+        </div> 
     <jsp:include page="footer.jsp"></jsp:include>
 
     <script>

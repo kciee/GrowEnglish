@@ -100,4 +100,36 @@ public class FreeDocumentDAO {
             return false;
         }
     }
+    
+    public int getTotalFreeDocumentsCount() {
+        String sql = "SELECT COUNT(*) FROM free_documents";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) return rs.getInt(1);
+        } catch (Exception e) { e.printStackTrace(); }
+        return 0;
+    }
+
+    public List<FreeDocument> getFreeDocumentsByPage(int page, int pageSize) {
+        List<FreeDocument> list = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+        String sql = "SELECT * FROM free_documents ORDER BY id OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, offset);
+            ps.setInt(2, pageSize);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new FreeDocument(
+                    rs.getInt("id"),
+                    rs.getString("title"),
+                    rs.getString("description"),
+                    rs.getString("image_path"),
+                    rs.getString("video_or_word")
+                ));
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return list;
+    }
 }

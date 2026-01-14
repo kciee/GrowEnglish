@@ -16,9 +16,26 @@ public class FreeDocument extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        FreeDocumentDAO freeDocumentDAO = new FreeDocumentDAO();
-        List<growenglish.model.FreeDocument> documentList = freeDocumentDAO.getAllFreeDocuments();
-        request.setAttribute("listDocs", documentList);
+        int page = 1;
+        int pageSize = 6;
+        
+        if (request.getParameter("page") != null) {
+            try {
+                page = Integer.parseInt(request.getParameter("page"));
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+        }
+
+        FreeDocumentDAO dao = new FreeDocumentDAO();
+        List<growenglish.model.FreeDocument> listDocs = dao.getFreeDocumentsByPage(page, pageSize);
+        int totalDocs = dao.getTotalFreeDocumentsCount();
+        int totalPages = (int) Math.ceil((double) totalDocs / pageSize);
+
+        request.setAttribute("listDocs", listDocs);
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", totalPages);
+        
         request.getRequestDispatcher("/freeDocuments.jsp").forward(request, response);
     }
 

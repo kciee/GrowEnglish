@@ -2,6 +2,7 @@ package growenglish.dao;
 
 import growenglish.db.DatabaseConnection;
 import growenglish.model.PaidDocument;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -96,5 +97,38 @@ public class PaidDocumentDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public int getTotalPaidDocumentsCount() {
+        String sql = "SELECT COUNT(*) FROM paid_documents";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) return rs.getInt(1);
+        } catch (Exception e) { e.printStackTrace(); }
+        return 0;
+    }
+
+    public List<PaidDocument> getPaidDocumentsByPage(int page, int pageSize) {
+        List<PaidDocument> list = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+        String sql = "SELECT * FROM paid_documents ORDER BY Id OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, offset);
+            ps.setInt(2, pageSize);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PaidDocument doc = new PaidDocument();
+                doc.setId(rs.getInt("Id"));
+                doc.setTitle(rs.getString("Title"));
+                doc.setDescription(rs.getString("Description"));
+                doc.setImagePath(rs.getString("ImagePath"));
+                doc.setVideoOrWord(rs.getString("VideoOrWord"));
+                doc.setPrice(rs.getDouble("Price"));
+                list.add(doc);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return list;
     }
 }
