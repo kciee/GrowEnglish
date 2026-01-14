@@ -107,7 +107,7 @@
                     
                     <div class="col-md-2">
                         <label class="form-label small fw-bold">Giá bán ($)</label>
-                        <input type="number" name="price" class="form-control text-success fw-bold" step="0.1" placeholder="0.0" required>
+                        <input type="number" name="price" min="0" class="form-control text-success fw-bold" step="0.1" placeholder="0.0" required>
                     </div>
                     
                     <div class="col-md-2">
@@ -168,7 +168,7 @@
 
                                     <td>
                                         <div class="input-group input-group-sm">
-                                            <input type="number" name="price" value="${d.price}" step="0.1" class="form-control form-control-sm border-0 bg-transparent text-success fw-bold px-0">
+                                            <input type="number" name="price" min="0" value="${d.price}" step="0.1" class="form-control form-control-sm border-0 bg-transparent text-success fw-bold px-0">
                                         </div>
                                     </td>
 
