@@ -127,6 +127,29 @@
             </div>
         </div>
 
+        <form action="PaidDocument" method="get" class="row g-3 mb-4 p-3 bg-white rounded shadow-sm">
+            <div class="col-md-3">
+                <label class="form-label small fw-bold text-muted">Giá thấp nhất</label>
+                <input type="number" name="min" class="form-control" placeholder="0" value="${currentMin}">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small fw-bold text-muted">Giá cao nhất</label>
+                <input type="number" name="max" class="form-control" placeholder="1000" value="${currentMax}">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small fw-bold text-muted">Sắp xếp theo</label>
+                <select name="sort" class="form-select">
+                    <option value="newest" ${currentSort == 'newest' ? 'selected' : ''}>Mới nhất</option>
+                    <option value="price_asc" ${currentSort == 'price_asc' ? 'selected' : ''}>Giá tăng dần</option>
+                    <option value="price_desc" ${currentSort == 'price_desc' ? 'selected' : ''}>Giá giảm dần</option>
+                </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-warning w-100 fw-bold text-white">
+                    <i class="fas fa-filter me-2"></i>Lọc ngay
+                </button>
+            </div>
+        </form>
         <div class="filter-group mb-5">
             <button class="btn btn-active">Tất cả</button>
             <button class="btn btn-inactive">Combo</button>
@@ -158,7 +181,7 @@
                 </c:forEach>
             </c:if>
              <c:if test="${empty paidDocuments}">
-                <div class="col-12 text-center text-muted py-5">Chưa có khóa học nào.</div>
+                <div class="col-12 text-center text-muted py-5">Không tìm thấy tài liệu nào phù hợp.</div>
             </c:if>
         </div>
 
@@ -166,19 +189,19 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-                        <a class="page-link" href="PaidDocument?page=${currentPage - 1}" aria-label="Previous">
+                        <a class="page-link" href="PaidDocument?page=${currentPage - 1}&min=${currentMin}&max=${currentMax}&sort=${currentSort}" aria-label="Previous">
                             <i class="fas fa-chevron-left"></i>
                         </a>
                     </li>
 
                     <c:forEach begin="1" end="${totalPages}" var="i">
                         <li class="page-item ${currentPage == i ? 'active' : ''}">
-                            <a class="page-link" href="PaidDocument?page=${i}">${i}</a>
+                            <a class="page-link" href="PaidDocument?page=${i}&min=${currentMin}&max=${currentMax}&sort=${currentSort}">${i}</a>
                         </li>
                     </c:forEach>
 
                     <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-                        <a class="page-link" href="PaidDocument?page=${currentPage + 1}" aria-label="Next">
+                        <a class="page-link" href="PaidDocument?page=${currentPage + 1}&min=${currentMin}&max=${currentMax}&sort=${currentSort}" aria-label="Next">
                             <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>
