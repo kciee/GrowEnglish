@@ -55,6 +55,11 @@
         	padding: 30px; 
         	overflow-y: auto; 
         }
+        
+        /* Màu sắc cho trạng thái đơn hàng */
+        .status-select.success { color: #198754; font-weight: bold; }
+        .status-select.pending { color: #ffc107; font-weight: bold; }
+        .status-select.cancel { color: #dc3545; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -78,7 +83,14 @@
 
 <div class="content">
     <div class="bg-white p-4 rounded shadow-sm">
-        <h4 class="mb-4 fw-bold text-primary">Danh sách Đơn hàng</h4>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4>Danh sách Đơn hàng</h4>
+            
+            <a href="${pageContext.request.contextPath}/admin/export-orders" class="btn btn-success shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Xuất báo cáo (CSV)
+            </a>
+        </div>
         
         <table class="table table-hover align-middle">
             <thead class="table-light">
@@ -94,32 +106,48 @@
             <tbody>
                 <c:forEach var="o" items="${orders}">
                     <tr>
-                        <td>#${o.id}</td>
+                        <td class="fw-bold text-secondary">#${o.id}</td>
                         <td class="fw-bold">${o.username}</td>
                         <td><fmt:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy HH:mm"/></td>
                         <td class="text-success fw-bold">$${o.totalPrice}</td>
+                        
                         <td>
-                            <form action="orders" method="post" class="d-flex align-items-center">
+                            <form action="orders" method="post" class="d-flex align-items-center m-0">
                                 <input type="hidden" name="action" value="updateStatus">
                                 <input type="hidden" name="id" value="${o.id}">
-                                <select name="status" class="form-select form-select-sm border-0 fw-bold 
-                                    ${o.status == 'success' ? 'text-success' : 'text-warning'}" 
-                                    onchange="this.form.submit()">
-                                    <option value="pending" ${o.status == 'pending' ? 'selected' : ''}>Đang xử lý</option>
-                                    <option value="success" ${o.status == 'success' ? 'selected' : ''}>Thành công</option>
-                                    <option value="cancel" ${o.status == 'cancel' ? 'selected' : ''}>Đã hủy</option>
+                                
+                                <select name="status" class="form-select form-select-sm border-0 status-select 
+                                    ${o.status == 'success' ? 'success' : (o.status == 'cancel' ? 'cancel' : 'pending')}" 
+                                    onchange="this.form.submit()" style="width: 140px; background-color: transparent;">
+                                    
+                                    <option value="pending" ${o.status == 'pending' ? 'selected' : ''}>⏳ Đang xử lý</option>
+                                    <option value="success" ${o.status == 'success' ? 'selected' : ''}>✅ Thành công</option>
+                                    <option value="cancel" ${o.status == 'cancel' ? 'selected' : ''}>❌ Đã hủy</option>
                                 </select>
                             </form>
                         </td>
+                        
                         <td>
-                            <button class="btn btn-sm btn-outline-secondary" title="Xem chi tiết"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary" title="Xem chi tiết (Chưa có link)">
+                                <i class="fas fa-eye"></i>
+                            </button>
                         </td>
                     </tr>
                 </c:forEach>
+                
+                <c:if test="${empty orders}">
+                    <tr>
+                        <td colspan="6" class="text-center py-5 text-muted">
+                            <i class="fas fa-box-open fa-3x mb-3 opacity-50"></i>
+                            <br>Chưa có đơn hàng nào trong hệ thống.
+                        </td>
+                    </tr>
+                </c:if>
             </tbody>
         </table>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
