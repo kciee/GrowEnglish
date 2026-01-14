@@ -16,7 +16,7 @@ public class CourseController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int page = 1;
-        int pageSize = 8;
+        int pageSize = 6;
         String pageParam = request.getParameter("page");
         if (pageParam != null) {
             page = Integer.parseInt(pageParam);

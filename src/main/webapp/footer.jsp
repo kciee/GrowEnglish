@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<footer class="bg-light text-dark pt-4" style="margin-left: 350px;">
+<footer class="bg-light text-dark pt-4" style="margin-left: 90px;">
     <div class="container">
         <div class="row mb-4">
             <div class="col-md-6">

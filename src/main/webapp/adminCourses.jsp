@@ -141,7 +141,7 @@
                                 <td style="width: 150px;">
                                     <div class="d-flex flex-column align-items-start">
                                         <img src="${c.imagePath}" class="course-thumb mb-1" alt="img" onerror="this.src='https://via.placeholder.com/60x40'">
-                                        <input type="file" name="image" class="form-control form-control-sm" style="font-size: 10px; width: 140px;">
+                                        
                                     </div>
                                 </td>
 

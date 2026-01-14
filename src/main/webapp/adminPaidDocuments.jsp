@@ -94,8 +94,8 @@
     <div class="container-fluid">
         <h2>Quản lý Tài liệu Trả phí</h2>
 
-        <div class="card mb-4 shadow-sm border-0">
-            <div class="card-header bg-white fw-bold"><i class="fas fa-plus-circle text-success"></i> Thêm tài liệu mới</div>
+        <div class="card mb-4 p-4 shadow-sm border-0 mt-3">
+            <h5 class="mb-3 text-primary"><i class="fas fa-plus-circle"></i> Thêm tài liệu mới</h5>
             <div class="card-body bg-light">
                 <form action="paid-documents" method="post" enctype="multipart/form-data" class="row g-3">
                     <input type="hidden" name="action" value="create">
@@ -159,7 +159,6 @@
                                     
                                     <td>
                                         <img src="${pageContext.request.contextPath}/${d.imagePath}" width="60" class="rounded border mb-1 object-fit-cover">
-                                        <input type="file" name="image" class="form-control form-control-sm" style="width: 80px; font-size: 10px;">
                                     </td>
                                     
                                     <td>
@@ -182,9 +181,8 @@
 
                                     <td class="text-end pe-3">
                                         <button type="submit" name="action" value="update" class="btn btn-outline-primary btn-sm mb-1" title="Lưu"><i class="fas fa-save"></i></button>
-                                        <button type="submit" name="action" value="delete" class="btn btn-outline-danger btn-sm mb-1" onclick="return confirm('Xóa tài liệu này?')" title="Xóa"><i class="fas fa-trash"></i></button>
-                                        
-                                        <a href="PaidDocumentDetail?id=${d.id}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Xem nội dung"><i class="fas fa-eye"></i></a>
+                                        <button type="submit" name="action" value="delete" class="btn btn-outline-danger btn-sm mb-1" onclick="return confirm('Xóa tài liệu này?')" title="Xóa"><i class="fas fa-trash"></i></button>                                        
+                                        <a href="PaidDocumentDetail?id=${d.id}" target="_blank" class="btn btn-outline-secondary btn-sm mb-1" title="Xem nội dung"><i class="fas fa-eye"></i></a>
                                     </td>
                                 </form>
                             </tr>

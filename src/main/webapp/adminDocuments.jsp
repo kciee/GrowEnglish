@@ -122,7 +122,6 @@
                                 <td style="width: 120px;">
                                     <img src="${pageContext.request.contextPath}/${d.imagePath}" width="100" height="60" style="object-fit: cover; border-radius: 5px;" class="mb-2">
                                     <input type="hidden" name="currentImage" value="${d.imagePath}">
-                                    <input type="file" name="image" class="form-control form-control-sm" style="font-size: 10px;">
                                 </td>
 
                                 <td>
