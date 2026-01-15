@@ -157,6 +157,9 @@
                     </div>
                 </div>
             </c:forEach>
+            <c:if test="${empty myCourses}">
+        		<p class="text-muted">Bạn chưa khóa học nào.</p>
+    		</c:if>
         </div>
 
         <h4 class="mb-3 text-warning"><i class="fas fa-crown"></i> Tài liệu trả phí</h4>
@@ -180,7 +183,7 @@
                 </div>
             </c:forEach>
             <c:if test="${empty listPaidDocument}">
-        		<p class="text-muted">Bạn chưa mua tài liệu VIP nào.</p>
+        		<p class="text-muted">Bạn chưa có tài liệu trả phí nào.</p>
     		</c:if>
         </div>
 
@@ -204,7 +207,7 @@
                 </div>
             </c:forEach>
             <c:if test="${empty listFreeDocument}">
-        		<p class="text-muted">Bạn chưa mua tài liệu VIP nào.</p>
+        		<p class="text-muted">Bạn chưa có tài liệu miễn phí nào.</p>
     		</c:if>
         </div>
     </div>
