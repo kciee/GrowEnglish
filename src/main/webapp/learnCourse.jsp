@@ -4,7 +4,8 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Học: ${course.name}</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Học: ${course.name}</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { 
@@ -56,28 +57,28 @@
         }
         
         ::-webkit-scrollbar { 
-        	width: 8px; 
+            width: 8px; 
         }
         
         ::-webkit-scrollbar-track { 
-        	background: #f1f1f1; 
+            background: #f1f1f1; 
         }
         
         ::-webkit-scrollbar-thumb { 
-        	background: #888; 
-        	border-radius: 4px; 
+            background: #888; 
+            border-radius: 4px; 
         }
         
         ::-webkit-scrollbar-thumb:hover { 
-        	background: #555; 
+            background: #555; 
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-light bg-white shadow-sm px-4" style="height: 60px; z-index: 1000;">
-    <a class="navbar-brand fw-bold text-secondary" href="home" style="font-size: 16px;">
-        <i class="fas fa-chevron-left me-2"></i> Quay lại trang chủ
+    <a class="navbar-brand fw-bold text-secondary" href="learningDocuments" style="font-size: 16px;">
+        <i class="fas fa-chevron-left me-2"></i> Quay lại tài liệu của tôi
     </a>
     <span class="fw-bold text-primary text-truncate ms-3" style="max-width: 70%;">${course.name}</span>
 </nav>
@@ -116,7 +117,18 @@
                 <i class="fas fa-list me-2"></i> Danh sách bài học
             </div>
             
+            <div class="p-3 border-bottom bg-white">
+                <small class="text-muted fw-bold">Tiến độ hoàn thành: ${progressPercent}%</small>
+                <div class="progress mt-2" style="height: 6px;">
+                    <div class="progress-bar bg-success" role="progressbar" 
+                         style="width: ${progressPercent}%" 
+                         aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
             <c:forEach var="l" items="${lessons}">
+                <c:set var="isCompleted" value="${completedLessonIds.contains(l.id)}" />
+                
                 <a href="learn?courseId=${course.id}&lessonId=${l.id}" class="text-decoration-none text-dark">
                     <div class="p-3 lesson-item ${l.id == currentLesson.id ? 'active' : ''}">
                         <div class="d-flex align-items-start">
@@ -124,6 +136,9 @@
                                 <c:choose>
                                     <c:when test="${l.id == currentLesson.id}">
                                          <i class="fas fa-play-circle text-warning fs-5"></i>
+                                    </c:when>
+                                    <c:when test="${isCompleted}">
+                                         <i class="fas fa-check-circle text-success fs-5"></i>
                                     </c:when>
                                     <c:otherwise>
                                          <i class="far fa-circle text-secondary fs-6"></i>
@@ -143,5 +158,21 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const lessonId = '${currentLesson.id}';
+        if(lessonId) {
+            fetch('mark-lesson?lessonId=' + lessonId, { method: 'POST' })
+            .then(response => {
+                if(response.ok) {
+                    console.log("Đã lưu tiến độ bài học: " + lessonId);
+                }
+            })
+            .catch(err => console.error("Lỗi lưu tiến độ:", err));
+        }
+    });
+</script>
+
 </body>
 </html>
