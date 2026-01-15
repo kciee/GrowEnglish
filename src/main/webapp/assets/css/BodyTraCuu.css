@@ -1,0 +1,187 @@
+@charset "UTF-8";
+body {
+	font-family: Poppins, sans-serif;
+	background-color: #f9f9f9;
+}
+
+.container {
+    font-family: Poppins, sans-serif;
+    margin: 50px auto;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.label-section, .label-hour, .label-day, .label-total_price, .label_quantity, .label_price, .label_sanpham, .label-status {
+    color: #FF6A00;
+}
+
+.cart-toolbar {
+	display: flex;
+	padding: 15px;
+	border-bottom: 2px solid #e4e4e4;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: #f9f9f9;
+}
+
+.cart-toolbar div,
+.cart-list-product_item > div {
+	flex: 1;
+	text-align: center;
+}
+
+.lable_sanpham, .name_product {
+	text-align: left;
+	flex: 2;	
+}
+
+.cart-list-product {
+	padding: 10px 0;
+}
+
+.cart-list-product_item {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.button_checkbox {
+	margin-right: 10px;
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
+.name_product {
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+}
+
+.price, .quantity, .total_price, .section, .day, .hour {
+	text-align: center;
+	font-size: 16px;
+	color: #333;
+}
+
+.section {
+	color: #e74c3c;
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+.section:hover {
+	color: #c0392b;
+}
+
+.cart_total {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.total-label {
+	color: #333;
+}
+
+.total-amount {
+	color: #ff6a00;
+}
+
+.checkout-btn-container {
+	display: flex;
+	justify-content: flex-end;
+	padding: 20px;
+	margin-bottom: 40px;
+}
+
+.checkout-btn {
+	color: white;
+	padding: 10px 20px;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	background-color: #ff6a00;
+}
+
+.address {
+	flex-basis: 20%;
+	text-align: center;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.cart-toolbar,
+.cart-list-product_item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.name_product, .label_sanpham {
+	flex: 2;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+
+.cart-toolbar div,
+.cart-list-product_item div {
+	flex: 1;
+	text-align: center;
+	padding: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.label_price, .label_quantity, .label-total_price,
+.label-day, .label-hour, .label-status, .label-section {
+	flex: 1;
+}
+
+input[type="checkbox"] {
+	flex: 0.5;
+}
+
+.cart-toolbar {
+	direction: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.label_sanpham {
+	width: 150px;
+	text-align: left;
+}
+
+.label_price, .label_quantity, .label-total_price,
+.label-day, .label-hour, .label-status, .label-section {
+	flex: 1;
+	text-align: center;
+}
+
+.label-section button {
+	color: white;
+	background-color: #e15757;
+	border: none;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 11px;
+	margin: 4px 2px;
+	cursor: pointer;
+	transition: background 0.3s;
+	border-radius: 4px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
