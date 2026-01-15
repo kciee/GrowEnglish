@@ -42,7 +42,7 @@
 <script>
     document.querySelector('form[action="submitQuiz"]').addEventListener('submit', function() {
         const timeTakenMs = Date.now() - startTime;
-        const timeTakenMinutes = (timeTakenMs / 1000 / 60).toFixed(2); // Làm tròn 2 chữ số
+        const timeTakenMinutes = (timeTakenMs / 1000 / 60).toFixed(2);
         document.getElementById('timeTakenInput').value = timeTakenMinutes;
     });
 </script>

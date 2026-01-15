@@ -38,7 +38,7 @@
 
     <div class="card card-forgot p-4">
         <div class="text-center mb-4">
-            <img src="assets/images/logo.png" alt="Logo" height="50" class="mb-3">
+            <img src="assets/images/GE.png" alt="Logo" height="50" class="mb-3">
             <h4 class="fw-bold">Quên mật khẩu?</h4>
             <p class="text-muted">Nhập email của bạn để nhận mật khẩu mới.</p>
         </div>
@@ -55,7 +55,7 @@
             </div>
         </c:if>
 
-        <form action="forgotPassword" method="post">
+        <form action="forgot-password" method="post">
             <div class="mb-3">
                 <label for="email" class="form-label fw-bold">Email đăng ký</label>
                 <div class="input-group">
